@@ -1,0 +1,6 @@
+notion/
+notion-old/
+.claude/
+.DS_Store
+Thumbs.db
+node_modules/

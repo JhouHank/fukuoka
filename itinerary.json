@@ -1,0 +1,508 @@
+{
+  "days": [
+    {
+      "date": "5/29（五）博多",
+      "dayNumber": 1,
+      "items": [
+        {
+          "time": "13:00",
+          "icon": "location",
+          "title": "抵達福岡",
+          "subtitle": null,
+          "mapCode": null,
+          "hasDetails": true,
+          "details": {
+            "googleMapUrl": "https://www.google.com/maps/search/?api=1&query=%E7%A6%8F%E5%B2%A1%E7%A9%BA%E6%B8%AF%20%E5%9B%BD%E9%9A%9B%E7%B7%9A"
+          }
+        },
+        {
+          "time": null,
+          "icon": "location",
+          "title": "直接計程車到飯店",
+          "subtitle": null,
+          "mapCode": null,
+          "hasDetails": false
+        },
+        {
+          "time": "14:30",
+          "icon": "location",
+          "title": "JR九州bloosom酒店 check in",
+          "subtitle": null,
+          "mapCode": null,
+          "hasDetails": true,
+          "details": {
+            "notes": "官網訂購",
+            "googleMapUrl": "https://www.google.com/maps/search/?api=1&query=JR%E4%B9%9D%E5%B7%9E%E3%83%9B%E3%83%86%E3%83%AB%20%E3%83%96%E3%83%A9%E3%83%83%E3%82%B5%E3%83%A0%E5%8D%9A%E5%A4%9A%E4%B8%AD%E5%A4%AE"
+          }
+        },
+        {
+          "time": null,
+          "icon": "location",
+          "title": "博多車站 努努雞",
+          "subtitle": null,
+          "mapCode": null,
+          "hasDetails": true,
+          "details": {
+            "googleMapUrl": "https://www.google.com/maps/search/?api=1&query=%E5%8A%AA%E5%8A%AA%E9%B6%8F%20%E5%8D%9A%E5%A4%9A%E3%83%87%E3%82%A4%E3%83%88%E3%82%B9%E5%BA%97"
+          }
+        },
+        {
+          "time": null,
+          "icon": "location",
+          "title": "BBB&",
+          "subtitle": null,
+          "mapCode": null,
+          "hasDetails": true,
+          "details": {
+            "notes": "【地址】日本〒810-0022 Fukuoka, Chuo Ward, Yakuin, 1 Chome−8−20 1F",
+            "googleMapUrl": "https://www.google.com/maps/search/?api=1&query=BBB%26%20Yakuin%20Fukuoka"
+          }
+        },
+        {
+          "time": "18:30",
+          "icon": "location",
+          "title": "晚餐：肉之山翔(已預約)",
+          "subtitle": null,
+          "mapCode": null,
+          "hasDetails": true,
+          "details": {
+            "googleMapUrl": "https://www.google.com/maps/place/%E3%80%92810-0041+Fukuoka,+Chuo+Ward,+Daimy%C5%8D,+1-ch%C5%8Dme%E2%88%921%E2%88%9217+%E7%BE%8E%E5%92%8C%E3%83%93%E3%83%AB+2f/@33.5859677,130.3930153,17z/data=!3m1!4b1!4m5!3m4!1s0x354191841fdea32d:0xce78f4fb261dd0bf!8m2!3d33.5859633!4d130.3955956?entry=ttu&g_ep=EgoyMDI2MDMyNC4wIKXMDSoASAFQAw%3D%3D"
+          }
+        }
+      ]
+    },
+    {
+      "date": "5/30（六）小倉/門司",
+      "dayNumber": 2,
+      "items": [
+        {
+          "time": "09:00",
+          "icon": "location",
+          "title": "早餐：Dacomecca",
+          "subtitle": "星期六、07:00–19:00",
+          "mapCode": null,
+          "hasDetails": true,
+          "details": {
+            "notes": "【地址】福岡県福岡市博多区博多駅東１丁目１８−３３ 博多イーストテラス １階",
+            "googleMapUrl": "https://www.google.com/maps/search/?api=1&query=DACOMECCA%20%E5%8D%9A%E5%A4%9A"
+          }
+        },
+        {
+          "time": null,
+          "icon": "location",
+          "title": "門司港",
+          "subtitle": null,
+          "mapCode": null,
+          "hasDetails": true,
+          "details": {
+            "notes": "山陽新幹線＋普通＆快速列車<br/><br/>先搭新幹線至小倉再轉乘 JR<br/>博多到小倉約16分鐘，再轉山陽本線約10分鐘到門司港。",
+            "googleMapUrl": "https://www.google.com/maps/search/?api=1&query=%E9%96%80%E5%8F%B8%E6%B8%AF%E9%A7%85"
+          }
+        },
+        {
+          "time": null,
+          "icon": "location",
+          "title": "北九州市舊門司稅關",
+          "subtitle": null,
+          "mapCode": null,
+          "hasDetails": true,
+          "details": {
+            "googleMapUrl": "https://www.google.com/maps/search/?api=1&query=%E6%97%A7%E9%96%80%E5%8F%B8%E7%A8%8E%E9%96%A2"
+          }
+        },
+        {
+          "time": null,
+          "icon": "location",
+          "title": "九州鐵道紀念館",
+          "subtitle": null,
+          "mapCode": null,
+          "hasDetails": true,
+          "details": {
+            "googleMapUrl": "https://www.google.com/maps/search/?api=1&query=%E4%B9%9D%E5%B7%9E%E9%89%84%E9%81%93%E8%A8%98%E5%BF%B5%E9%A4%A8"
+          }
+        },
+        {
+          "time": "12:00",
+          "icon": "location",
+          "title": "午餐：Princess Phi Phi(待定)",
+          "subtitle": null,
+          "mapCode": null,
+          "hasDetails": true,
+          "details": {
+            "notes": "<a href=\"https://www.google.com/maps/search/?api=1&query=Princess%20Phi%20Phi%20%E9%96%80%E5%8F%B8%E6%B8%AF\" target=\"_blank\">Princess Phi Phi (Google Maps)</a><br/><br/>備案：<strong>BEAR FRUITS</strong> (ベアーフルーツ) <a href=\"https://www.google.com/maps/search/?api=1&query=BEAR%20FRUITS%20%E9%96%80%E5%8F%B8%E6%B8%AF\" target=\"_blank\">(Google Maps)</a><br/><br/>福岡県北九州市門司区西海岸1-4-7 門司港センタービル 1F"
+          }
+        },
+        {
+          "time": null,
+          "icon": "location",
+          "title": "小倉城",
+          "subtitle": null,
+          "mapCode": null,
+          "hasDetails": true,
+          "details": {
+            "googleMapUrl": "https://www.google.com/maps/search/?api=1&query=%E5%B0%8F%E5%80%89%E5%9F%8E"
+          }
+        },
+        {
+          "time": "19:00",
+          "icon": "location",
+          "title": "晚餐：Shin-Shin 博多拉麵",
+          "subtitle": null,
+          "mapCode": null,
+          "hasDetails": true,
+          "details": {
+            "notes": "【地址】9-1 Hakataekichuogai, Hakata Ward, Fukuoka, 812-0012日本",
+            "googleMapUrl": "https://www.google.com/maps/search/?api=1&query=%E5%8D%9A%E5%A4%9A%E3%83%A9%E3%83%BC%E3%83%A1%E3%83%B3%20Shin-Shin%20KITTE%E5%8D%9A%E5%A4%9A%E5%BA%97"
+          }
+        }
+      ]
+    },
+    {
+      "date": "5/31（日）博多",
+      "dayNumber": 3,
+      "items": [
+        {
+          "time": null,
+          "icon": "location",
+          "title": "早餐：Espresso",
+          "subtitle": "10:00-15:00",
+          "mapCode": null,
+          "hasDetails": true,
+          "details": {
+            "notes": "【地址】日本〒812-0016 Fukuoka, Hakata Ward, Hakataekiminami, 2 Chome−1−26 一倉ビル 1F",
+            "googleMapUrl": "https://www.google.com/maps/search/?api=1&query=%E3%82%AB%E3%83%95%E3%82%A7%E3%82%A8%E3%82%B9%E3%83%97%E3%83%AC%E3%83%83%E3%82%BD%20%E5%8D%9A%E5%A4%9A%E9%A7%85%E5%8D%97%20%E4%B8%80%E5%80%89%E3%83%93%E3%83%AB"
+          }
+        },
+        {
+          "time": null,
+          "icon": "location",
+          "title": "買福岡市地下鐵 1 日乘車券",
+          "subtitle": null,
+          "mapCode": null,
+          "hasDetails": false
+        },
+        {
+          "time": null,
+          "icon": "location",
+          "title": "櫛田神社",
+          "subtitle": null,
+          "mapCode": null,
+          "hasDetails": true,
+          "details": {
+            "googleMapUrl": "https://www.google.com/maps/search/?api=1&query=%E6%AB%9B%E7%94%B0%E7%A5%9E%E7%A4%BE%20%E5%8D%9A%E5%A4%9A"
+          }
+        },
+        {
+          "time": null,
+          "icon": "location",
+          "title": "逛街 福岡parco/福岡三越/天神地下街",
+          "subtitle": null,
+          "mapCode": null,
+          "hasDetails": false
+        },
+        {
+          "time": "12:00",
+          "icon": "location",
+          "title": "午餐：天神找東西吃",
+          "subtitle": null,
+          "mapCode": null,
+          "hasDetails": true,
+          "details": {
+            "notes": "預計是壽喜燒"
+          }
+        },
+        {
+          "time": "14:00",
+          "icon": "location",
+          "title": "下午茶：Pain Stock Tenjin",
+          "subtitle": null,
+          "mapCode": null,
+          "hasDetails": true,
+          "details": {
+            "googleMapUrl": "https://www.google.com/maps/search/?api=1&query=Pain%20Stock%20%E5%A4%A9%E7%A5%9E"
+          }
+        },
+        {
+          "time": "18:30",
+          "icon": "location",
+          "title": "行李箱拿去博多車站寄放",
+          "subtitle": null,
+          "mapCode": null,
+          "hasDetails": true,
+          "details": {
+            "notes": "<a href=\"http://japanuts.com/2024/08/7.html\" target=\"_blank\">japanuts.com/2024/08/7.html</a><br/><a href=\"https://tabinaka-hakata.com/price/\" target=\"_blank\">https://tabinaka-hakata.com/price/</a>",
+            "googleMapUrl": "https://www.google.com/maps/search/?api=1&query=%E5%8D%9A%E5%A4%9A%E9%A7%85"
+          }
+        },
+        {
+          "time": null,
+          "icon": "location",
+          "title": "大濠公園",
+          "subtitle": null,
+          "mapCode": null,
+          "hasDetails": true,
+          "details": {
+            "googleMapUrl": "https://www.google.com/maps/search/?api=1&query=%E5%A4%A7%E6%BF%A0%E5%85%AC%E5%9C%92"
+          }
+        },
+        {
+          "time": "19:00",
+          "icon": "location",
+          "title": "晚餐：水炊鍋 橙(已預約)",
+          "subtitle": null,
+          "mapCode": null,
+          "hasDetails": true,
+          "details": {
+            "notes": "可以預訂<br/><br/>預約可（每月1日起接受下個月的預約。<br/>請注意，對於下下個月及以後的預約將不再接受。<br/>例如：在9月1日可以預約的日期為9月1日至10月30日。11月的預約將從10月1日起開始接受。）",
+            "googleMapUrl": "https://www.google.com/maps/search/?api=1&query=%E6%B0%B4%E3%81%9F%E3%81%8D%20%E6%A9%99%20%E7%A6%8F%E5%B2%A1"
+          }
+        },
+        {
+          "time": null,
+          "icon": "location",
+          "title": "天神屋台",
+          "subtitle": null,
+          "mapCode": null,
+          "hasDetails": true,
+          "details": {
+            "googleMapUrl": "https://www.google.com/maps/search/?api=1&query=%E5%A4%A9%E7%A5%9E%E5%B1%8B%E5%8F%B0%20%E7%A6%8F%E5%B2%A1"
+          }
+        }
+      ]
+    },
+    {
+      "date": "6/01（一）高千穗",
+      "dayNumber": 4,
+      "items": [
+        {
+          "time": "07:00",
+          "icon": "location",
+          "title": "早餐：前一晚超商買",
+          "subtitle": null,
+          "mapCode": null,
+          "hasDetails": false
+        },
+        {
+          "time": "08:00",
+          "icon": "location",
+          "title": "包車前往高千穗",
+          "subtitle": null,
+          "mapCode": null,
+          "hasDetails": true,
+          "details": {
+            "notes": "車程約2個半小時<br/>天馬行空包車<br/>費用16200<br/>4/29 付訂金5000<br/>5/18 付尾款11200"
+          }
+        },
+        {
+          "time": "10:30",
+          "icon": "location",
+          "title": "高千穗神社",
+          "subtitle": null,
+          "mapCode": null,
+          "hasDetails": true,
+          "details": {
+            "googleMapUrl": "https://www.google.com/maps/search/?api=1&query=%E9%AB%98%E5%8D%83%E7%A9%82%E7%A5%9E%E7%A4%BE"
+          }
+        },
+        {
+          "time": "11:30",
+          "icon": "location",
+          "title": "划船(5/18 8:00開放預訂)",
+          "subtitle": null,
+          "mapCode": null,
+          "hasDetails": true,
+          "details": {
+            "notes": "<strong>體驗時間為 30分鐘</strong>",
+            "googleMapUrl": "https://www.google.com/maps/search/?api=1&query=%E9%AB%98%E5%8D%83%E7%A9%82%E5%B3%A1%20%E8%B2%B8%E3%83%9C%E3%83%BC%E3%83%88"
+          }
+        },
+        {
+          "time": "12:00",
+          "icon": "location",
+          "title": "午餐：高千穗牛餐廳 和",
+          "subtitle": null,
+          "mapCode": null,
+          "hasDetails": true,
+          "details": {
+            "notes": "<a href=\"https://zh-tw-62123.site-translation.com/gourmet/\" target=\"_blank\">https://zh-tw-62123.site-translation.com/gourmet/</a>",
+            "googleMapUrl": "https://www.google.com/maps/search/?api=1&query=%E9%AB%98%E5%8D%83%E7%A9%82%E7%89%9B%E3%83%AC%E3%82%B9%E3%83%88%E3%83%A9%E3%83%B3%20%E5%92%8C"
+          }
+        },
+        {
+          "time": "14:30",
+          "icon": "location",
+          "title": "大神鐵道",
+          "subtitle": null,
+          "mapCode": null,
+          "hasDetails": true,
+          "details": {
+            "googleMapUrl": "https://www.google.com/maps/search/?api=1&query=%E9%AB%98%E5%8D%83%E7%A9%82%E3%81%82%E3%81%BE%E3%81%A6%E3%82%89%E3%81%99%E9%89%84%E9%81%93"
+          }
+        },
+        {
+          "time": "16:00",
+          "icon": "location",
+          "title": "天安河原",
+          "subtitle": null,
+          "mapCode": null,
+          "hasDetails": true,
+          "details": {
+            "googleMapUrl": "https://www.google.com/maps/search/?api=1&query=%E5%A4%A9%E5%AE%89%E6%B2%B3%E5%8E%9F%E5%AE%AE"
+          }
+        },
+        {
+          "time": "16:30",
+          "icon": "location",
+          "title": "天岩戶神社",
+          "subtitle": null,
+          "mapCode": null,
+          "hasDetails": true,
+          "details": {
+            "googleMapUrl": "https://www.google.com/maps/search/?api=1&query=%E5%A4%A9%E5%B2%A9%E6%88%B8%E7%A5%9E%E7%A4%BE"
+          }
+        },
+        {
+          "time": "19:00",
+          "icon": "location",
+          "title": "熊本OMO5 check in",
+          "subtitle": null,
+          "mapCode": null,
+          "hasDetails": true,
+          "details": {
+            "googleMapUrl": "https://www.google.com/maps/search/?api=1&query=OMO5%20%E7%86%8A%E6%9C%AC%20by%20%E6%98%9F%E9%87%8E%E3%83%AA%E3%82%BE%E3%83%BC%E3%83%88"
+          }
+        },
+        {
+          "time": "21:30",
+          "icon": "location",
+          "title": "晚餐：鳥貴族",
+          "subtitle": null,
+          "mapCode": null,
+          "hasDetails": true,
+          "details": {
+            "notes": "居酒屋"
+          }
+        }
+      ]
+    },
+    {
+      "date": "6/02（二）熊本",
+      "dayNumber": 5,
+      "items": [
+        {
+          "time": "09:00",
+          "icon": "location",
+          "title": "早餐：コメダ珈琲店 熊本下通店 或是 星乃咖啡",
+          "subtitle": null,
+          "mapCode": null,
+          "hasDetails": true,
+          "details": {
+            "googleMapUrl": "https://www.google.com/maps/search/?api=1&query=%E3%82%B3%E3%83%A1%E3%83%80%E7%8F%88%E7%90%B2%E5%BA%97%20%E7%86%8A%E6%9C%AC%E4%B8%8B%E9%80%9A%E5%BA%97"
+          }
+        },
+        {
+          "time": "09:30",
+          "icon": "location",
+          "title": "熊本城",
+          "subtitle": null,
+          "mapCode": null,
+          "hasDetails": true,
+          "details": {
+            "notes": "お茶の泉園 熊本城店(茶葉專賣)<br/>陣太鼓冰淇淋(紅豆牛奶冰)",
+            "googleMapUrl": "https://www.google.com/maps/search/?api=1&query=%E7%86%8A%E6%9C%AC%E5%9F%8E"
+          }
+        },
+        {
+          "time": "12:00",
+          "icon": "location",
+          "title": "午餐：勝烈亭豬排",
+          "subtitle": null,
+          "mapCode": null,
+          "hasDetails": true,
+          "details": {
+            "notes": "勝烈亭在下通商店街<br/>上通商店街可以吃點心(蜂樂饅頭)<br/><br/>「蜂楽饅頭 熊本上通店」<br/><br/><a href=\"https://www.youtube.com/redirect?event=video_description&redir_token=QUFFLUhqbEVBaFF1Y1BubHV1TGV1eFUtb1h1MThZUUxwZ3xBQ3Jtc0ttdE45MWdxT3hYNnVhRW1wRjhqU3FXcnZkaXczcG9pRmNhcVZkNS0xUUxONWxhYUVLbG5MT29yRzR6Smk0SVFhbTZEQmdNNDdRX2I2WFkxR25BZmZtVk1qSVhvZE4xYm84MmtpNlhUQU1jM1NfR2tOMA&q=https%3A%2F%2Fmaps.app.goo.gl%2FJwZosvLqdtwrbL8H7&v=CYj8g5GZojc\" target=\"_blank\">https://maps.app.goo.gl/JwZosvLqdtwrb...</a><br/><br/>【地址】8-18 Shinshigai, Chuo Ward, Kumamoto, 860-0803日本",
+            "googleMapUrl": "https://www.google.com/maps/search/?api=1&query=%E5%8B%9D%E7%83%88%E4%BA%AD%20%E4%B8%8B%E9%80%9A%E6%9C%AC%E5%BA%97%20%E7%86%8A%E6%9C%AC"
+          }
+        },
+        {
+          "time": null,
+          "icon": "location",
+          "title": "魯夫銅像",
+          "subtitle": null,
+          "mapCode": null,
+          "hasDetails": true,
+          "details": {
+            "notes": "魯夫雕像購買處：縣廳B1的Lawson<br/><br/>卡片領取處：1樓進門後，左前方的櫃檯<br/><br/>註：魯夫小雕像目前在熊本車站旁邊Amu Plaza百貨裡的草帽商店（Mugiwarasutoa Kumamototen）也有賣，但卡片一定得到縣廳拿<br/><br/>【地址】熊本県熊本市中央区水前寺６丁目１８−１",
+            "googleMapUrl": "https://www.google.com/maps/search/?api=1&query=%E3%83%AB%E3%83%95%E3%82%A3%E5%83%8F%20%E6%B0%B4%E5%89%8D%E5%AF%BA%E7%9C%8C%E5%BA%81%E5%89%8D%20%E7%86%8A%E6%9C%AC"
+          }
+        },
+        {
+          "time": "15:00",
+          "icon": "location",
+          "title": "搭乘新幹線回博多站",
+          "subtitle": null,
+          "mapCode": null,
+          "hasDetails": true,
+          "details": {
+            "notes": "<ul><li>熊本到博多的新幹線主要有「九州新幹線（櫻花號 Sakura / つばめ Tsubame）」<strong>和</strong>「山陽新幹線直通車（瑞穗號 Mizuho）」。</li><li><strong>櫻花號（Sakura）和瑞穗號（Mizuho）</strong>：如果是 8 節車廂編組的列車，<strong>第 1 到第 3 節車廂是自由席</strong>。這兩種車型速度最快，熊本到博多只要 32-38 分鐘。</li><li><strong>燕子號（Tsubame）</strong>：每站都停，車程約 50 分鐘。如果是 6 節車廂編組，通常 <strong>第 1 到第 3 節（有時第 1 到第 5 節）是自由席</strong>。因為你們要趕回博多，建議優先挑「櫻花號」或「瑞穗號」搭乘。</li></ul>"
+          }
+        },
+        {
+          "time": null,
+          "icon": "location",
+          "title": "步行至日航飯店 Check in",
+          "subtitle": null,
+          "mapCode": null,
+          "hasDetails": true,
+          "details": {
+            "googleMapUrl": "https://www.google.com/maps/search/?api=1&query=%E3%83%9B%E3%83%86%E3%83%AB%E6%97%A5%E8%88%AA%E7%A6%8F%E5%B2%A1"
+          }
+        },
+        {
+          "time": null,
+          "icon": "location",
+          "title": "自由活動",
+          "subtitle": null,
+          "mapCode": null,
+          "hasDetails": false
+        },
+        {
+          "time": "19:30",
+          "icon": "location",
+          "title": "晚餐：前田屋 牛腸鍋(已預約)",
+          "subtitle": null,
+          "mapCode": null,
+          "hasDetails": true,
+          "details": {
+            "googleMapUrl": "https://www.google.com/maps/search/?api=1&query=%E5%89%8D%E7%94%B0%E5%B1%8B%20%E3%82%82%E3%81%A4%E9%8D%8B%20%E7%86%8A%E6%9C%AC"
+          }
+        }
+      ]
+    },
+    {
+      "date": "6/03（三）博多",
+      "dayNumber": 6,
+      "items": [
+        {
+          "time": "09:00",
+          "icon": "location",
+          "title": "早餐：",
+          "subtitle": null,
+          "mapCode": null,
+          "hasDetails": false
+        },
+        {
+          "time": "12:00",
+          "icon": "location",
+          "title": "機場+午餐",
+          "subtitle": null,
+          "mapCode": null,
+          "hasDetails": true,
+          "details": {
+            "googleMapUrl": "https://www.google.com/maps/search/?api=1&query=%E7%A6%8F%E5%B2%A1%E7%A9%BA%E6%B8%AF%20%E5%9B%BD%E9%9A%9B%E7%B7%9A"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>旅遊行程</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+          'Helvetica Neue', Arial, sans-serif;
+        background: #f5f5f5;
+        overflow: hidden;
+        height: 100vh;
+        height: 100dvh;
+        position: fixed;
+        width: 100%;
+      }
+
+      .container {
+        display: flex;
+        width: 100vw;
+        height: 100vh;
+        height: 100dvh;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .day-card {
+        min-width: 100vw;
+        height: 100vh;
+        height: 100dvh;
+        scroll-snap-align: start;
+        display: flex;
+        flex-direction: column;
+        background: white;
+      }
+
+      .day-header {
+        background: #f8f8f8;
+        padding: 15px;
+        padding-top: calc(15px + env(safe-area-inset-top));
+        padding-left: calc(15px + env(safe-area-inset-left));
+        padding-right: calc(15px + env(safe-area-inset-right));
+        font-size: 18px;
+        font-weight: 500;
+        color: #666;
+        border-bottom: 1px solid #e0e0e0;
+        flex-shrink: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .day-content {
+        flex: 1;
+        overflow-y: auto;
+        padding: 20px;
+        padding-bottom: calc(40px + env(safe-area-inset-bottom));
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 30px;
+        cursor: pointer;
+        transition: background 0.2s;
+        padding: 10px;
+        margin: 10px -10px;
+        border-radius: 8px;
+      }
+
+      .item-chevron {
+        color: #c0c0c0;
+        font-size: 28px;
+        font-weight: 500;
+        margin-left: 10px;
+      }
+
+      .item.clickable:hover {
+        background: #f9f9f9;
+      }
+
+      .item.clickable:active {
+        background: #f0f0f0;
+      }
+
+      .icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 15px;
+        flex-shrink: 0;
+      }
+
+      .icon.location {
+        background: #9d9d7f;
+      }
+
+      .icon.plane {
+        background: #c0c0c0;
+      }
+
+      .icon.restaurant {
+        background: #e89b7e;
+      }
+
+      .icon.hotel {
+        background: #7eb0c9;
+      }
+
+      .icon.shopping {
+        background: #b98dc9;
+      }
+
+      .icon svg {
+        width: 20px;
+        height: 20px;
+        fill: white;
+      }
+
+      .item-content {
+        flex: 1;
+      }
+
+      .time {
+        font-size: 18px;
+        font-weight: 600;
+        color: #c45e4d;
+        margin-bottom: 8px;
+      }
+
+      .title {
+        font-size: 16px;
+        color: #333;
+        margin-bottom: 8px;
+        line-height: 1.5;
+      }
+
+      .subtitle {
+        font-size: 14px;
+        color: #999;
+        margin-bottom: 5px;
+      }
+
+      .map-code {
+        font-size: 18px;
+        color: #666;
+        background: #f0f0f0;
+        padding: 4px 8px;
+        border-radius: 4px;
+        display: inline-block;
+        margin-top: 5px;
+        font-family: 'Courier New', monospace;
+      }
+
+      /* Bottom Sheet Overlay */
+      .bottom-sheet-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s;
+        z-index: 999;
+      }
+
+      .bottom-sheet-overlay.active {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      /* Bottom Sheet */
+      .bottom-sheet {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: white;
+        border-radius: 20px 20px 0 0;
+        transform: translateY(100%);
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 1000;
+        max-height: 65vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .bottom-sheet.active {
+        transform: translateY(0);
+      }
+
+      .bottom-sheet-content {
+        flex: 1;
+        overflow-y: auto;
+        padding: 10px 20px 30px 20px;
+        padding-bottom: calc(30px + env(safe-area-inset-bottom));
+        padding-left: calc(20px + env(safe-area-inset-left));
+        padding-right: calc(20px + env(safe-area-inset-right));
+        overscroll-behavior: contain;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .detail-title {
+        font-size: 20px;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 20px;
+      }
+
+      .detail-section {
+        margin-bottom: 25px;
+      }
+
+      .detail-label {
+        font-size: 14px;
+        color: #666;
+        margin-bottom: 8px;
+        font-weight: 700;
+      }
+
+      .detail-link {
+        display: inline-block;
+        color: #4a90e2;
+        text-decoration: none;
+        padding: 10px 16px;
+        background: #f0f7ff;
+        border-radius: 8px;
+        font-size: 15px;
+        transition: background 0.2s;
+      }
+
+      .detail-link:hover {
+        background: #e3f0ff;
+      }
+
+      .menu-images {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .menu-image {
+        width: 100%;
+        border-radius: 10px;
+        overflow: hidden;
+      }
+
+      .menu-image img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .detail-notes {
+        font-size: 15px;
+        color: #666;
+        line-height: 1.6;
+        background: #f9f9f9;
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 8px;
+      }
+
+      .detail-notes ul {
+        list-style: disc;
+        padding-left: 20px;
+      }
+
+      .detail-notes img {
+        max-width: 100%;
+        height: auto;
+        display: block; /* 確保圖片作為塊級元素，避免底部多餘空間 */
+        margin: 0 auto; /* 圖片置中 */
+      }
+
+      .general-info-btn {
+        background: none;
+        border: 1px solid #ccc;
+        padding: 0;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        font-size: 14px;
+        font-weight: bold;
+        color: #666;
+        cursor: pointer;
+        transition: background 0.2s;
+        font-family: serif;
+      }
+
+      .general-info-btn:hover {
+        background: #f0f0f0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container" id="container"></div>
+
+    <!-- Bottom Sheet Overlay -->
+    <div class="bottom-sheet-overlay" id="overlay"></div>
+
+    <!-- Bottom Sheet -->
+    <div class="bottom-sheet" id="bottomSheet">
+      <div class="bottom-sheet-content" id="sheetContent"></div>
+    </div>
+
+    <div id="generalInfoContent" style="display: none">
+      <div class="detail-title">通用資訊</div>
+      <div class="detail-section">
+        <div class="detail-label">
+          Visit Japan Web：
+          <a
+            href="https://www.vjw.digital.go.jp/main/#/vjwplo001"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            連結
+          </a>
+        </div>
+        <div class="detail-notes">
+          最晚必須在台灣時間
+          <strong>5/29 07:30</strong>
+          前填寫完畢
+          <br />
+          【航空公司名稱】JX：STARLUX AIRLINES
+          <br />
+          【航班號】840
+          <br />
+          【都道府縣】FUKUOKA KEN
+          <br />
+          【市區町村名】FUKUOKA SHI HAKATA KU
+          <br />
+          【町字、番地】HAKATAEKIMAE 2-2-11
+          <br />
+          【電話】81928114800
+        </div>
+        <div class="detail-label">
+          外交部領事事務局抽獎：
+          <a
+            href="https://www.boca.gov.tw/cp-56-7726-01bc8-1.html"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            連結
+          </a>
+        </div>
+        <div class="detail-notes">出發前填寫即可</div>
+        <div class="detail-label">
+          台灣駐福岡辦事處：
+          <a
+            href="https://www.roc-taiwan.org/jpfuk/index.html"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            官網
+          </a>
+        </div>
+        <div class="detail-notes">
+          地址：日本福岡縣福岡市中央區櫻坂3-12-42
+          <br />
+          電話：+81-92-734-2810
+          <br />
+          服務時間：【平日】09:00–12:00 13:00–18:00（六日休息）
+          <br />
+          領務大廳：上午 09:00–11:30 收件、下午 13:00–15:00 取件
+          <br />
+          急難救助專線：+81-90-1922-9740（旅外國人 24hr）
+        </div>
+        <div class="detail-label">緊急聯絡電話</div>
+        <div class="detail-notes">
+          警察：110
+          <br />
+          救護車：119
+          <br />
+          諮詢是否叫救護車（全國）：#7119，通話本身收費、諮詢免費，24hr。
+          <br />
+          免費醫療諮詢服務：0570-050-235，支援中文。
+          <br />
+          台灣旅外國人急難救助：+81-90-1922-9740（24hr）
+        </div>
+      </div>
+    </div>
+    <div id="trainInfoContent" style="display: none">
+      <div class="detail-title">福岡市地下鐵資訊</div>
+      <div class="detail-section">
+        <div class="detail-label">路線</div>
+        <div class="detail-notes">
+          共三條：
+          <br />
+          1. 空港線（機場線，橘色）— 福岡空港 ↔ 姪濱
+          <br />
+          2. 箱崎線（藍色）— 中洲川端 ↔ 貝塚
+          <br />
+          3. 七隈線（綠色）— 橋本 ↔ 博多
+        </div>
+        <div class="detail-label">一日乘車券</div>
+        <div class="detail-notes">
+          大人￥640／兒童￥320
+          <br />
+          當日可無限次搭乘三條地下鐵路線
+          <br />
+          車站自動售票機可直接購買，部分觀光設施可憑券折扣
+        </div>
+        <div class="detail-label">購票/進站方式</div>
+        <div class="detail-notes">
+          SUICA、ICOCA、PASMO 等全國互通 IC 卡可直接刷進站
+          <br />
+          福岡市地下鐵發行的「hayakaken」IC 卡也可在全日本互通區域使用
+          <br />
+          現金可於售票機購買單程票或一日券
+        </div>
+        <div class="detail-label">其他</div>
+        <div class="detail-notes">
+          官網：
+          <a
+            href="https://subway.city.fukuoka.lg.jp/cha_trad/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            連結
+          </a>
+          <br />
+          票價/票券：
+          <a
+            href="https://subway.city.fukuoka.lg.jp/cha_trad/fare/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            連結
+          </a>
+        </div>
+      </div>
+    </div>
+    <script>
+      // Icon SVG paths
+      const icons = {
+        location: `<path d="M12,2C8.13,2 5,5.13 5,9c0,5.25 7,13 7,13s7-7.75 7-13C19,5.13 15.87,2 12,2zm0,9.5c-1.38,0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5,1.12 2.5,2.5-1.12,2.5-2.5,2.5z"/>`,
+        plane: `<path d="M21,16v-2l-8-5V3.5A1.5,1.5 0 0,0 11.5,2A1.5,1.5 0 0,0 10,3.5V9L2,14v2l8-2.5V19.5L8,21v1l3.5-1L15,22v-1l-2-1.5V13.5L21,16z"/>`,
+        restaurant: `<path d="M18.06,22.99h1.66c.84,0,1.53-.64,1.63-1.46L23,5.05h-5V1h-1.97v4.05h-4.97l.3,2.34c1.71.47,3.31,1.32,4.27,2.26 1.44,1.42,2.43,2.89,2.43,5.29v8.05zM1,21.99V21h15.03v0.99c0,0.55-0.45,1-1.01,1H2.01C1.45,22.99,1,22.54,1,21.99z M16.03,14.99c0-8-15.03-8-15.03,0h15.03zM1.02,17h15v2h-15V17z"/>`,
+        hotel: `<path d="M7,13c1.66,0,3-1.34,3-3S8.66,7,7,7S4,8.34,4,10S5.34,13,7,13z M19,7h-8v7H3V5H1v15h2v-3h18v3h2v-9C23,8.34,21.66,7,19,7z"/>`,
+        shopping: `<path d="M7,18c-1.1,0-1.99,0.9-1.99,2S5.9,22,7,22s2-0.9,2-2S8.1,18,7,18z M1,2v2h2l3.6,7.59l-1.35,2.45 C5.09,14.42,5,14.71,5,15c0,1.1,0.9,2,2,2h12v-2H7.42c-0.14,0-0.25-0.11-0.25-0.25l0.03-0.12l0.9-1.63h7.45 c0.75,0,1.41-0.41,1.75-1.03l3.58-6.49C22.95,5.27,22.84,5,22.5,5H5.21l-0.94-2H1z M17,18c-1.1,0-1.99,0.9-1.99,2s0.89,2,1.99,2 s2-0.9,2-2S18.1,18,17,18z"/>`,
+      };
+
+      const ITINERARY_SOURCE = 'itinerary.json';
+
+      let itineraryData = null;
+      let currentDetailItem = null;
+
+      function openGeneralInfo() {
+        const generalInfoHTML =
+          document.getElementById('generalInfoContent').innerHTML;
+        sheetContent.innerHTML = generalInfoHTML;
+        currentDetailItem = null; // Ensure consistency
+        overlay.classList.add('active');
+        bottomSheet.classList.add('active');
+      }
+
+      function openTrainInfo() {
+        const trainInfoHTML =
+          document.getElementById('trainInfoContent').innerHTML; // 使用新的內容區塊
+        sheetContent.innerHTML = trainInfoHTML;
+        currentDetailItem = null; // Ensure consistency
+        overlay.classList.add('active');
+        bottomSheet.classList.add('active');
+      }
+
+      // Load JSON data
+      async function loadItinerary() {
+        try {
+          const response = await fetch(ITINERARY_SOURCE);
+          itineraryData = await response.json();
+          renderItinerary();
+        } catch (error) {
+          console.error('Error loading itinerary:', error);
+          document.getElementById(
+            'container'
+          ).innerHTML = `<div style="padding: 20px; color: red;">無法載入行程資料，請確認 ${ITINERARY_SOURCE} 檔案存在</div>`;
+        }
+      }
+
+      // Render itinerary
+      function renderItinerary() {
+        const container = document.getElementById('container');
+        container.innerHTML = '';
+        // We don't reset scroll position here anymore, it's handled by scrollToDay
+
+        itineraryData.days.forEach((day) => {
+          const dayCard = document.createElement('div');
+          dayCard.className = 'day-card';
+
+          const dayHeader = document.createElement('div');
+          dayHeader.className = 'day-header';
+          dayHeader.innerHTML = `
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <span>DAY ${day.dayNumber} | ${day.date}</span>
+              <button class="general-info-btn" onclick="openGeneralInfo()" title="通用資訊">i</button>
+              <button class="general-info-btn" onclick="openTrainInfo()" title="福岡市地下鐵資訊">鐵</button>
+            </div>
+          `;
+
+          const dayContent = document.createElement('div');
+          dayContent.className = 'day-content';
+
+          day.items.forEach((item) => {
+            const itemDiv = document.createElement('div');
+            itemDiv.className = 'item';
+
+            if (item.hasDetails) {
+              itemDiv.classList.add('clickable');
+              itemDiv.onclick = () => openBottomSheet(item);
+            }
+
+            const iconDiv = document.createElement('div');
+            iconDiv.className = `icon ${item.icon}`;
+            iconDiv.innerHTML = `<svg viewBox="0 0 24 24">${
+              icons[item.icon] || icons.location
+            }</svg>`;
+
+            const contentDiv = document.createElement('div');
+            contentDiv.className = 'item-content';
+
+            if (item.time) {
+              const timeDiv = document.createElement('div');
+              timeDiv.className = 'time';
+              timeDiv.textContent = item.time;
+              contentDiv.appendChild(timeDiv);
+            }
+
+            const titleDiv = document.createElement('div');
+            titleDiv.className = 'title';
+            titleDiv.textContent = item.title;
+            contentDiv.appendChild(titleDiv);
+
+            if (item.subtitle) {
+              const subtitleDiv = document.createElement('div');
+              subtitleDiv.className = 'subtitle';
+              subtitleDiv.textContent = item.subtitle;
+              contentDiv.appendChild(subtitleDiv);
+            }
+
+            if (item.mapCode) {
+              const mapCodeDiv = document.createElement('div');
+              mapCodeDiv.className = 'map-code';
+              mapCodeDiv.textContent = `${item.mapCode}`;
+              contentDiv.appendChild(mapCodeDiv);
+            }
+
+            itemDiv.appendChild(iconDiv);
+            itemDiv.appendChild(contentDiv);
+
+            if (item.hasDetails) {
+              const chevronDiv = document.createElement('div');
+              chevronDiv.className = 'item-chevron';
+              chevronDiv.innerHTML = '&rsaquo;';
+              itemDiv.appendChild(chevronDiv);
+            }
+
+            dayContent.appendChild(itemDiv);
+          });
+
+          dayCard.appendChild(dayHeader);
+          dayCard.appendChild(dayContent);
+          container.appendChild(dayCard);
+        });
+      }
+
+      // Bottom Sheet functions
+      const overlay = document.getElementById('overlay');
+      const bottomSheet = document.getElementById('bottomSheet');
+      const sheetContent = document.getElementById('sheetContent');
+
+      function openBottomSheet(item) {
+        sheetContent.scrollTop = 0; // 每次打開時重置滾動位置
+        currentDetailItem = item;
+        renderBottomSheetContent(item);
+        overlay.classList.add('active');
+        bottomSheet.classList.add('active');
+      }
+
+      function closeBottomSheet() {
+        overlay.classList.remove('active');
+        bottomSheet.classList.remove('active');
+        currentDetailItem = null;
+      }
+
+      function renderBottomSheetContent(item) {
+        let html = `<div class="detail-title">${item.title}</div>`;
+
+        if (item.details) {
+          const details = item.details;
+
+          // Google Map Link
+          if (details.googleMapUrl) {
+            html += `
+              <div class="detail-section">
+                <div class="detail-label">地圖位置</div>
+                <a href="${details.googleMapUrl}" target="_blank" class="detail-link">
+                  📍 開啟 Google Maps
+                </a>
+              </div>
+            `;
+          }
+
+          // Notes
+          if (details.notes) {
+            html += `
+              <div class="detail-section">
+                <div class="detail-label">備註</div>
+                <div class="detail-notes">${details.notes}</div>
+              </div>
+            `;
+          }
+
+          // Menu Images
+          if (details.menuImages && details.menuImages.length > 0) {
+            html += `
+              <div class="detail-section">
+                <div class="detail-label">菜單</div>
+                <div class="menu-images">
+            `;
+            details.menuImages.forEach((imgPath) => {
+              html += `
+                <div class="menu-image">
+                  <img src="${imgPath}" alt="菜單圖片">
+                </div>
+              `;
+            });
+            html += `
+                </div>
+              </div>
+            `;
+          }
+
+          // Website Link
+          if (details.website) {
+            html += `
+              <div class="detail-section">
+                <div class="detail-label">簡介</div>
+                <a href="${details.website}" target="_blank" class="detail-link">
+                  🔗 查看網站
+                </a>
+              </div>
+            `;
+          }
+        }
+
+        sheetContent.innerHTML = html;
+      }
+
+      // Event listeners
+      overlay.addEventListener('click', closeBottomSheet);
+
+      loadItinerary();
+    </script>
+  </body>
+</html>
