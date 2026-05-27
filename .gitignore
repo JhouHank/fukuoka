@@ -1,6 +1,7 @@
 notion/
 notion-old/
 .claude/
+.agents/
 .DS_Store
 Thumbs.db
 node_modules/

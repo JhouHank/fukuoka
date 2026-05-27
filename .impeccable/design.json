@@ -1,0 +1,224 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-05-27T07:20:41Z",
+  "title": "Design System: 2026 福岡周家旅遊",
+  "extensions": {
+    "colorMeta": {
+      "paper": {
+        "role": "neutral",
+        "displayName": "Paper 米紙",
+        "canonical": "oklch(97% 0.005 70)",
+        "tonalRamp": [
+          "oklch(20% 0.01 70)",
+          "oklch(32% 0.01 70)",
+          "oklch(45% 0.01 70)",
+          "oklch(58% 0.009 70)",
+          "oklch(72% 0.008 70)",
+          "oklch(85% 0.008 70)",
+          "oklch(91% 0.008 70)",
+          "oklch(97% 0.005 70)"
+        ]
+      },
+      "paper-deep": {
+        "role": "neutral",
+        "displayName": "Paper Deep 深紙",
+        "canonical": "oklch(94% 0.008 70)",
+        "tonalRamp": [
+          "oklch(20% 0.01 70)",
+          "oklch(32% 0.01 70)",
+          "oklch(45% 0.01 70)",
+          "oklch(58% 0.009 70)",
+          "oklch(72% 0.008 70)",
+          "oklch(82% 0.008 70)",
+          "oklch(94% 0.008 70)",
+          "oklch(97% 0.005 70)"
+        ]
+      },
+      "paper-soft": {
+        "role": "neutral",
+        "displayName": "Paper Soft 軟紙",
+        "canonical": "oklch(91% 0.008 70)"
+      },
+      "paper-edge": {
+        "role": "neutral",
+        "displayName": "Paper Edge 紙緣",
+        "canonical": "oklch(86% 0.008 70)"
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink 墨",
+        "canonical": "oklch(28% 0.01 70)",
+        "tonalRamp": [
+          "oklch(15% 0.01 70)",
+          "oklch(22% 0.01 70)",
+          "oklch(28% 0.01 70)",
+          "oklch(38% 0.01 70)",
+          "oklch(48% 0.008 70)",
+          "oklch(58% 0.008 70)",
+          "oklch(65% 0.008 70)",
+          "oklch(78% 0.008 70)"
+        ]
+      },
+      "ink-soft": {
+        "role": "neutral",
+        "displayName": "Ink Soft 淡墨",
+        "canonical": "oklch(48% 0.008 70)"
+      },
+      "ink-faint": {
+        "role": "neutral",
+        "displayName": "Ink Faint 灰墨",
+        "canonical": "oklch(65% 0.008 70)"
+      },
+      "ink-ghost": {
+        "role": "neutral",
+        "displayName": "Ink Ghost 影墨",
+        "canonical": "oklch(78% 0.008 70)"
+      },
+      "vermilion": {
+        "role": "primary",
+        "displayName": "Vermilion 赭紅",
+        "canonical": "oklch(55% 0.13 28)",
+        "tonalRamp": [
+          "oklch(25% 0.08 28)",
+          "oklch(35% 0.11 28)",
+          "oklch(45% 0.13 28)",
+          "oklch(55% 0.13 28)",
+          "oklch(65% 0.12 28)",
+          "oklch(75% 0.09 28)",
+          "oklch(86% 0.05 28)",
+          "oklch(94% 0.025 28)"
+        ]
+      },
+      "vermilion-deep": {
+        "role": "primary",
+        "displayName": "Vermilion Deep 深赭",
+        "canonical": "oklch(45% 0.13 28)"
+      },
+      "vermilion-tint": {
+        "role": "primary",
+        "displayName": "Vermilion Tint 赭霧",
+        "canonical": "oklch(94% 0.025 28)"
+      },
+      "overlay": {
+        "role": "neutral",
+        "displayName": "Overlay 紙覆",
+        "canonical": "oklch(15% 0.01 70 / 0.55)"
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display 手帖大標", "purpose": "Day card 頂部 'DAY N' 唯一使用點。Serif 出現第二次就是裝飾。" },
+      "headline": { "displayName": "Headline 區段標", "purpose": "Bottom sheet detail-title、二級頁標題。" },
+      "title": { "displayName": "Title 強調行", "purpose": "Item 時間欄、強調 title。配 tnum 等寬數字。" },
+      "body": { "displayName": "Body 內文", "purpose": "Item 主標題、detail-notes。16px 長輩硬底線。" },
+      "supporting": { "displayName": "Supporting 副文", "purpose": "Subtitle、地址、次要資訊。" },
+      "label": { "displayName": "Label 區段名", "purpose": "Detail section 區段標題，主要承載拉丁字 + 0.08em tracking。" }
+    },
+    "shadows": [],
+    "motion": [
+      { "name": "ease-standard", "value": "cubic-bezier(0.4, 0, 0.2, 1)", "purpose": "Bottom sheet 主要過場、所有 transform 動畫的預設曲線。" },
+      { "name": "duration-fast", "value": "0.15s", "purpose": "Item hover / press 等微互動。" },
+      { "name": "duration-base", "value": "0.3s", "purpose": "Bottom sheet 進退、overlay 淡入淡出。" },
+      { "name": "reduced-motion", "value": "opacity-only, no transform", "purpose": "prefers-reduced-motion: reduce 時，所有 transform 動畫降為 opacity 切換或直接無動畫。" }
+    ],
+    "breakpoints": [
+      { "name": "mobile", "value": "0–767px" },
+      { "name": "tablet-plus", "value": "768px+" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Day Header",
+      "kind": "nav",
+      "refersTo": "day-header",
+      "description": "每個 day-card 頂部固定的標題列，含 Display 大標 + 兩個 info chip。",
+      "html": "<header class=\"ds-day-header\"><h1 class=\"ds-day-title\">DAY 3 │ 6/01 (一) 門司港</h1><div class=\"ds-day-chips\"><button class=\"ds-chip-info\" type=\"button\"><svg class=\"ds-chip-icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><line x1=\"12\" y1=\"16\" x2=\"12\" y2=\"12\"/><line x1=\"12\" y1=\"8\" x2=\"12.01\" y2=\"8\"/></svg>通用</button><button class=\"ds-chip-info\" type=\"button\"><svg class=\"ds-chip-icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"4\" y=\"3\" width=\"16\" height=\"16\" rx=\"2\"/><path d=\"M4 11h16\"/><path d=\"M8 19l-2 2\"/><path d=\"M16 19l2 2\"/></svg>地鐵</button></div></header>",
+      "css": ".ds-day-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 20px; background: oklch(94% 0.008 70); border-bottom: 1px solid oklch(86% 0.008 70); }\n.ds-day-title { font-family: 'Noto Serif TC', 'Source Han Serif TC', Georgia, serif; font-size: 22px; font-weight: 600; line-height: 1.2; letter-spacing: -0.01em; color: oklch(28% 0.01 70); margin: 0; }\n.ds-day-chips { display: flex; gap: 8px; flex-shrink: 0; }\n.ds-chip-info { display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; min-height: 44px; background: oklch(91% 0.008 70); color: oklch(48% 0.008 70); border: none; border-radius: 999px; font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans TC', system-ui, sans-serif; font-size: 14px; font-weight: 500; cursor: pointer; transition: background 0.15s; }\n.ds-chip-info:hover, .ds-chip-info:focus-visible { background: oklch(86% 0.008 70); outline: none; }\n.ds-chip-icon { width: 18px; height: 18px; flex-shrink: 0; }"
+    },
+    {
+      "name": "Item Row",
+      "kind": "card",
+      "refersTo": "item-row",
+      "description": "行程列表中的單一站。網格 [icon][time][content][chevron]，無背景無 shadow。",
+      "html": "<li class=\"ds-item-row ds-item-current\"><svg class=\"ds-item-icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M18 8h1a4 4 0 010 8h-1\"/><path d=\"M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4z\"/><line x1=\"6\" y1=\"1\" x2=\"6\" y2=\"4\"/><line x1=\"10\" y1=\"1\" x2=\"10\" y2=\"4\"/><line x1=\"14\" y1=\"1\" x2=\"14\" y2=\"4\"/></svg><time class=\"ds-item-time\">09:00</time><div class=\"ds-item-content\"><p class=\"ds-item-title\">早餐：Dacomecca</p><p class=\"ds-item-sub\">博多車站東 1-18-33</p></div><svg class=\"ds-item-chevron\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></li>",
+      "css": ".ds-item-row { display: grid; grid-template-columns: 24px 60px 1fr 16px; column-gap: 12px; align-items: center; padding: 12px; border-radius: 10px; list-style: none; cursor: pointer; transition: background 0.15s; min-height: 56px; }\n.ds-item-row:hover, .ds-item-row:focus-visible { background: oklch(91% 0.008 70); outline: none; }\n.ds-item-current { background: oklch(94% 0.025 28); }\n.ds-item-current .ds-item-time { color: oklch(45% 0.13 28); }\n.ds-item-icon { width: 24px; height: 24px; color: oklch(48% 0.008 70); }\n.ds-item-current .ds-item-icon { color: oklch(45% 0.13 28); }\n.ds-item-time { font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans TC', system-ui, sans-serif; font-size: 18px; font-weight: 600; line-height: 1.3; color: oklch(28% 0.01 70); font-variant-numeric: tabular-nums; }\n.ds-item-content { display: flex; flex-direction: column; gap: 2px; min-width: 0; }\n.ds-item-title { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans TC', system-ui, sans-serif; font-size: 16px; font-weight: 400; line-height: 1.5; color: oklch(28% 0.01 70); overflow: hidden; text-overflow: ellipsis; }\n.ds-item-sub { margin: 0; font-family: inherit; font-size: 14px; font-weight: 400; line-height: 1.5; color: oklch(65% 0.008 70); }\n.ds-item-chevron { width: 16px; height: 16px; color: oklch(78% 0.008 70); }"
+    },
+    {
+      "name": "Link Action",
+      "kind": "button",
+      "refersTo": "link-action",
+      "description": "Detail 區段中的「開啟 Google Maps / 查看網站」按鈕型連結。Vermilion tint 底 + deep 字。",
+      "html": "<a class=\"ds-link-action\" href=\"#\"><svg class=\"ds-link-icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z\"/><circle cx=\"12\" cy=\"10\" r=\"3\"/></svg>開啟 Google Maps</a>",
+      "css": ".ds-link-action { display: inline-flex; align-items: center; gap: 8px; padding: 12px 16px; min-height: 44px; background: oklch(94% 0.025 28); color: oklch(45% 0.13 28); border-radius: 10px; font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans TC', system-ui, sans-serif; font-size: 16px; font-weight: 500; text-decoration: none; transition: background 0.15s, color 0.15s; }\n.ds-link-action:hover, .ds-link-action:focus-visible { background: oklch(55% 0.13 28); color: oklch(97% 0.005 70); outline: none; }\n.ds-link-icon { width: 18px; height: 18px; flex-shrink: 0; }"
+    },
+    {
+      "name": "Card Notes",
+      "kind": "card",
+      "refersTo": "card-notes",
+      "description": "Detail 區段的備註內容卡。Paper-deep 底，ink-soft 內文。",
+      "html": "<div class=\"ds-card-notes\"><p class=\"ds-notes-line\">最晚必須在台灣時間 <strong>5/29 07:30</strong> 前填寫完畢。</p><ul class=\"ds-notes-list\"><li>航空公司：JX STARLUX</li><li>航班號：840</li><li>都道府縣：FUKUOKA KEN</li></ul></div>",
+      "css": ".ds-card-notes { padding: 16px; background: oklch(94% 0.008 70); color: oklch(48% 0.008 70); border-radius: 10px; font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans TC', system-ui, sans-serif; font-size: 16px; font-weight: 400; line-height: 1.5; }\n.ds-notes-line { margin: 0 0 12px 0; }\n.ds-notes-line:last-child { margin-bottom: 0; }\n.ds-notes-line strong { color: oklch(28% 0.01 70); font-weight: 600; }\n.ds-notes-list { margin: 0; padding-left: 20px; list-style: disc; }\n.ds-notes-list li { margin-bottom: 4px; }"
+    },
+    {
+      "name": "Day Indicator",
+      "kind": "nav",
+      "refersTo": "day-indicator",
+      "description": "底部固定的天數導航 dots。當前是 vermilion，其餘是 ink-ghost。點擊可跳轉。",
+      "html": "<nav class=\"ds-day-indicator\" aria-label=\"日期導覽\"><button class=\"ds-day-dot\" aria-label=\"DAY 1\"></button><button class=\"ds-day-dot\" aria-label=\"DAY 2\"></button><button class=\"ds-day-dot ds-day-dot-active\" aria-current=\"true\" aria-label=\"DAY 3\"></button><button class=\"ds-day-dot\" aria-label=\"DAY 4\"></button><button class=\"ds-day-dot\" aria-label=\"DAY 5\"></button><button class=\"ds-day-dot\" aria-label=\"DAY 6\"></button></nav>",
+      "css": ".ds-day-indicator { position: fixed; left: 50%; bottom: calc(16px + env(safe-area-inset-bottom)); transform: translateX(-50%); display: flex; gap: 8px; padding: 8px 12px; background: oklch(97% 0.005 70 / 0.85); backdrop-filter: blur(8px); border-radius: 999px; border: 1px solid oklch(86% 0.008 70); z-index: 10; }\n.ds-day-dot { width: 8px; height: 8px; padding: 0; background: oklch(78% 0.008 70); border: none; border-radius: 999px; cursor: pointer; transition: background 0.15s, transform 0.15s; position: relative; }\n.ds-day-dot::after { content: ''; position: absolute; inset: -10px; }\n.ds-day-dot:hover, .ds-day-dot:focus-visible { background: oklch(48% 0.008 70); outline: none; }\n.ds-day-dot-active { background: oklch(55% 0.13 28); width: 24px; }"
+    },
+    {
+      "name": "Bottom Sheet",
+      "kind": "custom",
+      "refersTo": "sheet-surface",
+      "description": "詳情面板。圓角頂緣，paper 底，無自身 shadow，依賴 overlay 提供分層。",
+      "html": "<div class=\"ds-sheet-overlay\"></div><section class=\"ds-bottom-sheet\" role=\"dialog\" aria-modal=\"true\"><div class=\"ds-grab-handle\" aria-hidden=\"true\"></div><div class=\"ds-sheet-content\"><h2 class=\"ds-sheet-title\">早餐：Dacomecca</h2><div class=\"ds-sheet-section\"><span class=\"ds-sheet-label\">地圖位置</span><a class=\"ds-link-action\" href=\"#\">開啟 Google Maps</a></div></div></section>",
+      "css": ".ds-sheet-overlay { position: fixed; inset: 0; background: oklch(15% 0.01 70 / 0.55); z-index: 999; }\n.ds-bottom-sheet { position: fixed; left: 0; right: 0; bottom: 0; max-height: 80vh; background: oklch(97% 0.005 70); border-radius: 20px 20px 0 0; z-index: 1000; display: flex; flex-direction: column; padding-top: 8px; }\n.ds-grab-handle { width: 36px; height: 4px; background: oklch(86% 0.008 70); border-radius: 999px; margin: 0 auto 8px auto; }\n.ds-sheet-content { flex: 1; overflow-y: auto; padding: 12px 20px calc(30px + env(safe-area-inset-bottom)); overscroll-behavior: contain; }\n.ds-sheet-title { margin: 0 0 20px 0; font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans TC', system-ui, sans-serif; font-size: 22px; font-weight: 600; line-height: 1.2; color: oklch(28% 0.01 70); }\n.ds-sheet-section { display: flex; flex-direction: column; gap: 8px; margin-bottom: 24px; }\n.ds-sheet-label { font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans TC', system-ui, sans-serif; font-size: 14px; font-weight: 600; color: oklch(48% 0.008 70); }\n@media (prefers-reduced-motion: reduce) { .ds-bottom-sheet, .ds-sheet-overlay { transition: none !important; } }"
+    }
+  ],
+  "narrative": {
+    "northStar": "九州家族手帖",
+    "overview": "把這份系統想像成一本由家人為家人手工裝訂的旅遊手帳：米色紙、煤墨書寫、偶爾用赭紅圈出當下重要的一站。它不模仿手寫感（那會變廉價），而是借用紙本手帳的氣質：克制、有溫度、可信、密度恰到好處。每一頁是一天，每一行是一站，色彩用得保留，靠字級與留白而非裝飾把資訊排好。\n\n這份系統明確拒絕「乾淨白底 + 一排彩色玩具感 icon」的入門級旅遊 App 樣板（這是目前狀態，要刻意離開），也拒絕 SaaS 偽精緻、過度漸層 / 玻璃 / gradient text / 重型動畫、以及都會生冷霓虹風。它服務的是一個含長輩的家庭、在福岡旅程中、單手操作、光線多變的真實場景。",
+    "keyCharacteristics": [
+      "暖中性 paper 紙感背景，唯一強調色是赭紅 vermilion",
+      "字級從 body 16px 起跳，長輩可讀的硬底線",
+      "完全 flat，沒有 box-shadow（除 bottom sheet 的 overlay）",
+      "Icon 全部 outline 單色 + 形狀區分，色盲友善",
+      "每個元素的留白與層次靠 typography 與背景階梯，不靠卡片堆疊"
+    ],
+    "rules": [
+      { "name": "The One Voice Rule", "body": "赭紅是這個系統唯一的「強調色」。每個畫面上它的覆蓋面積不得超過 10%。如果一個畫面上同時有兩個以上的赭紅元素在搶注意力，刪到剩一個。", "section": "colors" },
+      { "name": "The No-Pure Rule", "body": "禁止 #fff / #000 / 任何 chroma=0 的純灰。所有中性色都向 hue 70 偏一點 chroma（0.005-0.01）。", "section": "colors" },
+      { "name": "The Type-Driven Palette Rule", "body": "任一新元素的預設顏色是 ink-soft，不是其他。要從這個 baseline 主動論證為什麼需要更深、更淺或加色。", "section": "colors" },
+      { "name": "The 16px Floor Rule", "body": "Body 與 item 主標題不得小於 16px。長輩在福岡街頭日光下要讀得到。", "section": "typography" },
+      { "name": "The Tabular Time Rule", "body": "所有時間強制 font-variant-numeric: tabular-nums。垂直排列時數字必須對齊，這是手帳氣質的關鍵。", "section": "typography" },
+      { "name": "The Serif-Only-For-Day Rule", "body": "Noto Serif TC 只用在 DAY N 一處。serif 出現第二次就是裝飾，立刻刪。", "section": "typography" },
+      { "name": "The Flat Forever Rule", "body": "任何元素都不准加 box-shadow。99% 情況用背景階梯能解決。", "section": "elevation" },
+      { "name": "The Border Is The Edge Rule", "body": "區隔元素的方法只有兩種：背景色換階、或一條 1px paper-edge 邊線。不要兩種同時用。", "section": "elevation" }
+    ],
+    "dos": [
+      "Do 用 OKLCH 定義所有顏色。#hex 只在不得已時備援。",
+      "Do body 字級從 16px 起跳。長輩友善是硬底線。",
+      "Do time、價格、編號等表格型數字加 font-variant-numeric: tabular-nums。",
+      "Do 用背景階梯（paper → paper-deep → paper-soft）製造分層。",
+      "Do Icon 一律 outline 單色，形狀承載語意，色盲也能用。",
+      "Do 給 prefers-reduced-motion: reduce 一條備援路徑——transition 降為 opacity 或直接無動畫。",
+      "Do Touch target ≥44pt，header 的小 chip 要靠透明 padding 達標。",
+      "Do 加 day indicator（dots + 可跳轉）。沒這個使用者在第 4 天會迷路。"
+    ],
+    "donts": [
+      "Don't 用 #fff 或 #000。所有中性色向 hue 70 偏 chroma 0.005-0.01。",
+      "Don't 同時出現兩個以上飽和色——「乾淨白底 + 一排彩色圓形 icon」是 anti-reference。",
+      "Don't 加 box-shadow。任何 surface、任何狀態。完全 flat。",
+      "Don't 用 SaaS 仿精緻——深藍 + 黃金、hero metric 大數字、Stripe 仿冒款。",
+      "Don't 用 gradient text。完全禁止。",
+      "Don't 用 glassmorphism / backdrop-filter blur 做卡片。",
+      "Don't 用 side-stripe border 當點綴——絕對 ban。",
+      "Don't 用 Courier New 或任何裝飾型字。serif 僅留給 DAY N 大標。",
+      "Don't 在 JSON 用 <br> 拼接 detail-notes 換行——餵結構化資料。",
+      "Don't 用 emoji 當 icon。改成 inline SVG outline。",
+      "Don't 拷貝 'i / 鐵' 這種拉丁字 + 漢字混用的圓鈕。每個 chip 要有 label，touch target ≥44pt。",
+      "Don't 用顏色當唯一語意載體。Icon 必須有形狀差異，狀態必須有非顏色標記。",
+      "Don't 為 bottom sheet 自身加 shadow。"
+    ]
+  }
+}

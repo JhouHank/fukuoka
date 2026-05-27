@@ -6,26 +6,91 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, viewport-fit=cover"
     />
-    <title>旅遊行程</title>
+    <title>2026 福岡周家旅遊</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&family=Noto+Serif+TC:wght@600&display=swap"
+      rel="stylesheet"
+    />
     <style>
+      :root {
+        --paper: oklch(97% 0.005 70);
+        --paper-deep: oklch(94% 0.008 70);
+        --paper-soft: oklch(91% 0.008 70);
+        --paper-edge: oklch(86% 0.008 70);
+        --ink: oklch(28% 0.01 70);
+        --ink-soft: oklch(48% 0.008 70);
+        --ink-faint: oklch(65% 0.008 70);
+        --ink-ghost: oklch(78% 0.008 70);
+        --vermilion: oklch(55% 0.13 28);
+        --vermilion-deep: oklch(45% 0.13 28);
+        --vermilion-tint: oklch(94% 0.025 28);
+        --overlay: oklch(15% 0.01 70 / 0.55);
+
+        --radius-sm: 4px;
+        --radius-md: 10px;
+        --radius-lg: 20px;
+        --radius-pill: 999px;
+
+        --space-xs: 4px;
+        --space-sm: 8px;
+        --space-md: 12px;
+        --space-base: 16px;
+        --space-lg: 20px;
+        --space-xl: 24px;
+
+        --font-sans:
+          -apple-system, BlinkMacSystemFont, 'Noto Sans TC', system-ui,
+          'Helvetica Neue', Arial, sans-serif;
+        --font-serif:
+          'Noto Serif TC', 'Source Han Serif TC', Georgia, 'Times New Roman',
+          serif;
+
+        --duration-fast: 0.15s;
+        --duration-base: 0.3s;
+        --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
       }
 
+      html {
+        -webkit-text-size-adjust: 100%;
+      }
+
       body {
-        font-family:
-          -apple-system, BlinkMacSystemFont, 'Noto Sans TC', Roboto,
-          'Helvetica Neue', Arial, sans-serif;
-        background: #f5f5f5;
+        font-family: var(--font-sans);
+        font-size: 16px;
+        line-height: 1.5;
+        color: var(--ink);
+        background: var(--paper);
         overflow: hidden;
         height: 100vh;
         height: 100dvh;
         position: fixed;
         width: 100%;
+        -webkit-font-smoothing: antialiased;
       }
 
+      button {
+        font-family: inherit;
+        color: inherit;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      :focus-visible {
+        outline: 2px solid var(--vermilion);
+        outline-offset: 2px;
+      }
+
+      /* ------------------------------- Container -------------------------------- */
       .container {
         display: flex;
         width: 100vw;
@@ -35,6 +100,10 @@
         overflow-y: hidden;
         scroll-snap-type: x mandatory;
         -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+      .container::-webkit-scrollbar {
+        display: none;
       }
 
       .day-card {
@@ -44,292 +113,477 @@
         scroll-snap-align: start;
         display: flex;
         flex-direction: column;
-        background: white;
+        background: var(--paper);
       }
 
+      /* ------------------------------- Day header ------------------------------- */
       .day-header {
-        background: #f8f8f8;
-        padding: 15px;
-        padding-top: calc(15px + env(safe-area-inset-top));
-        padding-left: calc(15px + env(safe-area-inset-left));
-        padding-right: calc(15px + env(safe-area-inset-right));
-        font-size: 18px;
-        font-weight: 500;
-        color: #666;
-        border-bottom: 1px solid #e0e0e0;
+        background: var(--paper-deep);
+        padding: var(--space-base) var(--space-lg);
+        padding-top: calc(var(--space-base) + env(safe-area-inset-top));
+        padding-left: calc(var(--space-lg) + env(safe-area-inset-left));
+        padding-right: calc(var(--space-lg) + env(safe-area-inset-right));
+        border-bottom: 1px solid var(--paper-edge);
         flex-shrink: 0;
         display: flex;
         justify-content: space-between;
         align-items: center;
+        gap: var(--space-md);
       }
 
-      .day-content {
+      .day-title {
+        font-family: var(--font-serif);
+        font-size: clamp(18px, 5.2vw, 22px);
+        font-weight: 600;
+        line-height: 1.25;
+        letter-spacing: -0.01em;
+        color: var(--ink);
         flex: 1;
-        overflow-y: auto;
-        padding: 10px 20px 20px;
-        padding-bottom: calc(40px + env(safe-area-inset-bottom));
-        -webkit-overflow-scrolling: touch;
+        min-width: 0;
+        word-break: break-word;
+      }
+
+      .day-chips {
         display: flex;
-        flex-direction: column;
-        gap: 20px;
-      }
-
-      .item {
-        display: flex;
-        align-items: center;
-        cursor: pointer;
-        transition: background 0.2s;
-        padding: 10px;
-        border-radius: 8px;
-        gap: 15px;
-      }
-
-      .item-chevron {
-        color: #c0c0c0;
-        font-size: 28px;
-        font-weight: 500;
-        margin-left: 10px;
-      }
-
-      .item.clickable:hover {
-        background: #f9f9f9;
-      }
-
-      .item.clickable:active {
-        background: #f0f0f0;
-      }
-
-      .icon {
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        gap: var(--space-sm);
         flex-shrink: 0;
       }
 
-      .icon.location {
-        background: #9d9d7f;
+      .chip-info {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: var(--space-sm) 14px;
+        min-height: 44px;
+        background: var(--paper-soft);
+        color: var(--ink-soft);
+        border: none;
+        border-radius: var(--radius-pill);
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background var(--duration-fast);
       }
 
-      .icon.plane {
-        background: #c0c0c0;
+      .chip-info:hover,
+      .chip-info:focus-visible {
+        background: var(--paper-edge);
+        outline: none;
+      }
+      .chip-info:focus-visible {
+        outline: 2px solid var(--vermilion);
+        outline-offset: 2px;
       }
 
-      .icon.restaurant {
-        background: #e89b7e;
+      .chip-info:active {
+        background: var(--paper-edge);
       }
 
-      .icon.hotel {
-        background: #7eb0c9;
+      .chip-info svg {
+        width: 18px;
+        height: 18px;
+        flex-shrink: 0;
       }
 
-      .icon.shopping {
-        background: #b98dc9;
+      /* ------------------------------- Day content ------------------------------ */
+      .day-content {
+        flex: 1;
+        overflow-y: auto;
+        padding: var(--space-md) var(--space-lg) 120px;
+        padding-left: calc(var(--space-lg) + env(safe-area-inset-left));
+        padding-right: calc(var(--space-lg) + env(safe-area-inset-right));
+        padding-bottom: calc(120px + env(safe-area-inset-bottom));
+        -webkit-overflow-scrolling: touch;
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-xs);
       }
 
-      .icon svg {
-        width: 20px;
-        height: 20px;
-        fill: white;
+      /* ------------------------------- Item row --------------------------------- */
+      .item {
+        display: grid;
+        grid-template-columns: 24px 56px minmax(0, 1fr) 16px;
+        column-gap: 10px;
+        align-items: center;
+        padding: var(--space-md);
+        border-radius: var(--radius-md);
+        min-height: 56px;
+        background: transparent;
+        transition: background var(--duration-fast);
+        min-width: 0;
+        flex-shrink: 0;
+      }
+
+      .item.no-time {
+        grid-template-columns: 24px minmax(0, 1fr) 16px;
+      }
+
+      .item.clickable {
+        cursor: pointer;
+      }
+
+      .item.clickable:hover {
+        background: var(--paper-soft);
+      }
+      .item.clickable:active {
+        background: var(--paper-edge);
+      }
+
+      .item.current {
+        background: var(--vermilion-tint);
+      }
+      .item.current .item-icon,
+      .item.current .item-chevron {
+        color: var(--vermilion-deep);
+      }
+
+      .item-icon {
+        width: 24px;
+        height: 24px;
+        color: var(--ink-soft);
+        flex-shrink: 0;
+      }
+
+      .item-time {
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 1.3;
+        color: var(--vermilion-deep);
+        font-variant-numeric: tabular-nums;
+      }
+
+      .item.no-time .item-time {
+        display: none;
       }
 
       .item-content {
         display: flex;
         flex-direction: column;
-        flex: 1;
+        gap: 2px;
+        min-width: 0;
       }
 
-      .time {
-        font-size: 18px;
-        font-weight: 600;
-        color: #c45e4d;
-        line-height: 24px;
-      }
-
-      .title {
+      .item-title {
         font-size: 16px;
-        color: #333;
-        line-height: 24px;
+        font-weight: 400;
+        line-height: 1.5;
+        color: var(--ink);
+        overflow-wrap: anywhere;
+        word-break: break-word;
+        min-width: 0;
       }
 
-      .subtitle {
+      .item-subtitle {
         font-size: 14px;
-        color: #999;
+        line-height: 1.5;
+        color: var(--ink-faint);
+        overflow-wrap: anywhere;
+        word-break: break-word;
+        min-width: 0;
       }
 
-      .map-code {
-        font-size: 18px;
-        color: #666;
-        background: #f0f0f0;
-        padding: 4px 8px;
-        border-radius: 4px;
-        display: inline-block;
-        margin-top: 5px;
-        font-family: 'Courier New', monospace;
+      .item-mapcode {
+        align-self: flex-start;
+        margin-top: 4px;
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--ink-soft);
+        background: var(--paper-deep);
+        padding: 2px 8px;
+        border-radius: var(--radius-sm);
+        font-variant-numeric: tabular-nums;
       }
 
-      /* Bottom Sheet Overlay */
+      .item-chevron {
+        width: 16px;
+        height: 16px;
+        color: var(--ink-ghost);
+        flex-shrink: 0;
+      }
+
+      .item:not(.clickable) .item-chevron {
+        visibility: hidden;
+      }
+
+      /* ------------------------------ Day indicator ----------------------------- */
+      .day-indicator {
+        position: fixed;
+        left: 50%;
+        bottom: calc(var(--space-base) + env(safe-area-inset-bottom));
+        transform: translateX(-50%);
+        display: flex;
+        gap: var(--space-sm);
+        padding: var(--space-sm) var(--space-md);
+        background: oklch(97% 0.005 70 / 0.92);
+        border: 1px solid var(--paper-edge);
+        border-radius: var(--radius-pill);
+        z-index: 50;
+        backdrop-filter: saturate(1.1);
+      }
+
+      .day-dot {
+        position: relative;
+        width: 8px;
+        height: 8px;
+        padding: 0;
+        background: var(--ink-ghost);
+        border: none;
+        border-radius: var(--radius-pill);
+        cursor: pointer;
+        transition:
+          background var(--duration-fast),
+          width var(--duration-fast);
+      }
+
+      .day-dot::after {
+        content: '';
+        position: absolute;
+        inset: -12px;
+      }
+
+      .day-dot:hover,
+      .day-dot:focus-visible {
+        background: var(--ink-soft);
+        outline: none;
+      }
+      .day-dot:focus-visible {
+        outline: 2px solid var(--vermilion);
+        outline-offset: 4px;
+      }
+
+      .day-dot.active {
+        background: var(--vermilion);
+        width: 24px;
+      }
+
+      /* ------------------------------- Bottom sheet ----------------------------- */
       .bottom-sheet-overlay {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(0, 0, 0, 0.5);
+        inset: 0;
+        background: var(--overlay);
         opacity: 0;
         pointer-events: none;
-        transition: opacity 0.3s;
+        transition: opacity var(--duration-base);
         z-index: 999;
       }
-
       .bottom-sheet-overlay.active {
         opacity: 1;
         pointer-events: auto;
       }
 
-      /* Bottom Sheet */
       .bottom-sheet {
         position: fixed;
         left: 0;
         right: 0;
         bottom: 0;
-        background: white;
-        border-radius: 20px 20px 0 0;
+        background: var(--paper);
+        border-radius: var(--radius-lg) var(--radius-lg) 0 0;
         transform: translateY(100%);
-        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: transform var(--duration-base) var(--ease-standard);
         z-index: 1000;
-        max-height: 65vh;
+        max-height: 80vh;
         display: flex;
         flex-direction: column;
       }
-
       .bottom-sheet.active {
         transform: translateY(0);
+      }
+
+      .sheet-handle {
+        flex-shrink: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 32px;
+        cursor: grab;
+        touch-action: none;
+        user-select: none;
+        -webkit-user-select: none;
+      }
+      .sheet-handle:active {
+        cursor: grabbing;
+      }
+
+      .grab-handle {
+        width: 36px;
+        height: 4px;
+        background: var(--paper-edge);
+        border-radius: var(--radius-pill);
       }
 
       .bottom-sheet-content {
         flex: 1;
         overflow-y: auto;
-        padding: 10px 20px 30px 20px;
-        padding-bottom: calc(30px + env(safe-area-inset-bottom));
-        padding-left: calc(20px + env(safe-area-inset-left));
-        padding-right: calc(20px + env(safe-area-inset-right));
+        padding: var(--space-md) var(--space-lg) var(--space-xl);
+        padding-bottom: calc(var(--space-xl) + env(safe-area-inset-bottom));
+        padding-left: calc(var(--space-lg) + env(safe-area-inset-left));
+        padding-right: calc(var(--space-lg) + env(safe-area-inset-right));
         overscroll-behavior: contain;
         -webkit-overflow-scrolling: touch;
       }
 
       .detail-title {
-        font-size: 20px;
+        font-size: 22px;
         font-weight: 600;
-        color: #333;
-        margin-bottom: 20px;
+        line-height: 1.2;
+        color: var(--ink);
+        margin-bottom: var(--space-lg);
       }
 
       .detail-section {
         display: flex;
         flex-direction: column;
-        gap: 8px;
-        margin-bottom: 20px;
+        gap: var(--space-sm);
+        margin-bottom: var(--space-xl);
+      }
+      .detail-section:last-child {
+        margin-bottom: 0;
       }
 
       .detail-label {
         font-size: 14px;
-        color: #666;
-        font-weight: 700;
+        font-weight: 600;
+        color: var(--ink-soft);
       }
 
       .detail-link {
-        display: inline-block;
-        color: #4a90e2;
+        display: inline-flex;
+        align-items: center;
+        gap: var(--space-sm);
+        align-self: flex-start;
+        padding: var(--space-md) var(--space-base);
+        min-height: 44px;
+        background: var(--vermilion-tint);
+        color: var(--vermilion-deep);
         text-decoration: none;
-        padding: 10px 16px;
-        background: #f0f7ff;
-        border-radius: 8px;
-        font-size: 15px;
-        transition: background 0.2s;
+        border-radius: var(--radius-md);
+        font-size: 16px;
+        font-weight: 500;
+        transition:
+          background var(--duration-fast),
+          color var(--duration-fast);
+      }
+      .detail-link:hover,
+      .detail-link:focus-visible {
+        background: var(--vermilion);
+        color: var(--paper);
+        outline: none;
+      }
+      .detail-link:focus-visible {
+        outline: 2px solid var(--vermilion-deep);
+        outline-offset: 2px;
+      }
+      .detail-link:active {
+        background: var(--vermilion-deep);
+        color: var(--paper);
       }
 
-      .detail-link:hover {
-        background: #e3f0ff;
+      .detail-link svg {
+        width: 18px;
+        height: 18px;
+        flex-shrink: 0;
+      }
+
+      .detail-notes {
+        font-size: 16px;
+        line-height: 1.6;
+        color: var(--ink-soft);
+        background: var(--paper-deep);
+        padding: var(--space-base);
+        border-radius: var(--radius-md);
+      }
+      .detail-notes strong {
+        color: var(--ink);
+        font-weight: 600;
+      }
+      .detail-notes a {
+        color: var(--vermilion-deep);
+        text-decoration: underline;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 3px;
+      }
+      .detail-notes a:hover {
+        color: var(--vermilion);
+      }
+      .detail-notes ul {
+        list-style: disc;
+        padding-left: var(--space-lg);
+      }
+      .detail-notes img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: var(--space-sm) auto;
+        border-radius: var(--radius-sm);
       }
 
       .menu-images {
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        gap: var(--space-sm);
       }
 
       .menu-image {
         width: 100%;
-        border-radius: 10px;
+        border-radius: var(--radius-md);
         overflow: hidden;
+        background: var(--paper-deep);
       }
-
       .menu-image img {
         width: 100%;
         height: auto;
         display: block;
       }
 
-      .detail-notes {
-        font-size: 15px;
-        color: #666;
-        line-height: 1.6;
-        background: #f9f9f9;
-        padding: 15px;
-        border-radius: 8px;
-        /* margin-bottom: 8px; */
+      .error-state {
+        padding: var(--space-xl);
+        color: var(--vermilion-deep);
+        font-size: 16px;
+        line-height: 1.5;
       }
 
-      .detail-notes ul {
-        list-style: disc;
-        padding-left: 20px;
-      }
-
-      .detail-notes img {
-        max-width: 100%;
-        height: auto;
-        display: block; /* 確保圖片作為塊級元素，避免底部多餘空間 */
-        margin: 0 auto; /* 圖片置中 */
-      }
-
-      .general-info-btn {
-        background: none;
-        border: 1px solid #ccc;
-        padding: 0;
-        width: 24px;
-        height: 24px;
-        border-radius: 50%;
-        font-size: 14px;
-        font-weight: bold;
-        color: #666;
-        cursor: pointer;
-        transition: background 0.2s;
-        font-family: serif;
-      }
-
-      .general-info-btn:hover {
-        background: #f0f0f0;
+      /* --------------------------- Reduced motion ------------------------------- */
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          transition-duration: 0.01ms !important;
+          animation-duration: 0.01ms !important;
+        }
+        .bottom-sheet {
+          transition: none;
+        }
+        .container {
+          scroll-behavior: auto;
+        }
       }
     </style>
   </head>
   <body>
     <div class="container" id="container"></div>
 
-    <!-- Bottom Sheet Overlay -->
+    <nav class="day-indicator" id="dayIndicator" aria-label="日期導覽"></nav>
+
     <div class="bottom-sheet-overlay" id="overlay"></div>
 
-    <!-- Bottom Sheet -->
-    <div class="bottom-sheet" id="bottomSheet">
+    <aside
+      class="bottom-sheet"
+      id="bottomSheet"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="sheetTitle"
+    >
+      <div class="sheet-handle" id="sheetHandle" aria-hidden="true">
+        <div class="grab-handle"></div>
+      </div>
       <div class="bottom-sheet-content" id="sheetContent"></div>
-    </div>
+    </aside>
 
-    <div id="generalInfoContent" style="display: none">
-      <div class="detail-title">通用資訊</div>
+    <template id="generalInfoTemplate">
+      <div class="detail-title" id="sheetTitle">通用資訊</div>
       <div class="detail-section">
-        <div class="detail-label">
+        <h3 class="detail-label">
           Visit Japan Web：
           <a
             href="https://www.vjw.digital.go.jp/main/#/vjwplo001"
@@ -338,7 +592,7 @@
           >
             連結
           </a>
-        </div>
+        </h3>
         <div class="detail-notes">
           最晚必須在台灣時間
           <strong>5/29 07:30</strong>
@@ -356,7 +610,9 @@
           <br />
           【電話】81924778739
         </div>
-        <div class="detail-label">
+      </div>
+      <div class="detail-section">
+        <h3 class="detail-label">
           外交部領事事務局抽獎：
           <a
             href="https://www.boca.gov.tw/cp-56-7726-01bc8-1.html"
@@ -365,9 +621,11 @@
           >
             連結
           </a>
-        </div>
+        </h3>
         <div class="detail-notes">出發前填寫即可</div>
-        <div class="detail-label">
+      </div>
+      <div class="detail-section">
+        <h3 class="detail-label">
           台灣駐福岡辦事處：
           <a
             href="https://www.roc-taiwan.org/jpfuk/index.html"
@@ -376,7 +634,7 @@
           >
             官網
           </a>
-        </div>
+        </h3>
         <div class="detail-notes">
           地址：日本福岡縣福岡市中央區櫻坂3-12-42
           <br />
@@ -388,7 +646,9 @@
           <br />
           急難救助專線：+81-90-1922-9740（旅外國人 24hr）
         </div>
-        <div class="detail-label">緊急聯絡電話</div>
+      </div>
+      <div class="detail-section">
+        <h3 class="detail-label">緊急聯絡電話</h3>
         <div class="detail-notes">
           警察：110
           <br />
@@ -401,11 +661,12 @@
           台灣旅外國人急難救助：+81-90-1922-9740（24hr）
         </div>
       </div>
-    </div>
-    <div id="trainInfoContent" style="display: none">
-      <div class="detail-title">福岡市地下鐵資訊</div>
+    </template>
+
+    <template id="trainInfoTemplate">
+      <div class="detail-title" id="sheetTitle">福岡市地下鐵資訊</div>
       <div class="detail-section">
-        <div class="detail-label">路線</div>
+        <h3 class="detail-label">路線</h3>
         <div class="detail-notes">
           共三條：
           <br />
@@ -415,7 +676,9 @@
           <br />
           3. 七隈線（綠色）— 橋本 ↔ 博多
         </div>
-        <div class="detail-label">一日乘車券</div>
+      </div>
+      <div class="detail-section">
+        <h3 class="detail-label">一日乘車券</h3>
         <div class="detail-notes">
           大人￥640／兒童￥320
           <br />
@@ -423,7 +686,9 @@
           <br />
           車站自動售票機可直接購買，部分觀光設施可憑券折扣
         </div>
-        <div class="detail-label">購票/進站方式</div>
+      </div>
+      <div class="detail-section">
+        <h3 class="detail-label">購票/進站方式</h3>
         <div class="detail-notes">
           SUICA、ICOCA、PASMO 等全國互通 IC 卡可直接刷進站
           <br />
@@ -431,7 +696,9 @@
           <br />
           現金可於售票機購買單程票或一日券
         </div>
-        <div class="detail-label">其他</div>
+      </div>
+      <div class="detail-section">
+        <h3 class="detail-label">其他</h3>
         <div class="detail-notes">
           官網：
           <a
@@ -452,148 +719,288 @@
           </a>
         </div>
       </div>
-    </div>
+    </template>
+
     <script>
-      // Icon SVG paths
-      const icons = {
-        location: `<path d="M12,2C8.13,2 5,5.13 5,9c0,5.25 7,13 7,13s7-7.75 7-13C19,5.13 15.87,2 12,2zm0,9.5c-1.38,0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5,1.12 2.5,2.5-1.12,2.5-2.5,2.5z"/>`,
-        plane: `<path d="M21,16v-2l-8-5V3.5A1.5,1.5 0 0,0 11.5,2A1.5,1.5 0 0,0 10,3.5V9L2,14v2l8-2.5V19.5L8,21v1l3.5-1L15,22v-1l-2-1.5V13.5L21,16z"/>`,
-        restaurant: `<path d="M18.06,22.99h1.66c.84,0,1.53-.64,1.63-1.46L23,5.05h-5V1h-1.97v4.05h-4.97l.3,2.34c1.71.47,3.31,1.32,4.27,2.26 1.44,1.42,2.43,2.89,2.43,5.29v8.05zM1,21.99V21h15.03v0.99c0,0.55-0.45,1-1.01,1H2.01C1.45,22.99,1,22.54,1,21.99z M16.03,14.99c0-8-15.03-8-15.03,0h15.03zM1.02,17h15v2h-15V17z"/>`,
-        hotel: `<path d="M7,13c1.66,0,3-1.34,3-3S8.66,7,7,7S4,8.34,4,10S5.34,13,7,13z M19,7h-8v7H3V5H1v15h2v-3h18v3h2v-9C23,8.34,21.66,7,19,7z"/>`,
-        shopping: `<path d="M7,18c-1.1,0-1.99,0.9-1.99,2S5.9,22,7,22s2-0.9,2-2S8.1,18,7,18z M1,2v2h2l3.6,7.59l-1.35,2.45 C5.09,14.42,5,14.71,5,15c0,1.1,0.9,2,2,2h12v-2H7.42c-0.14,0-0.25-0.11-0.25-0.25l0.03-0.12l0.9-1.63h7.45 c0.75,0,1.41-0.41,1.75-1.03l3.58-6.49C22.95,5.27,22.84,5,22.5,5H5.21l-0.94-2H1z M17,18c-1.1,0-1.99,0.9-1.99,2s0.89,2,1.99,2 s2-0.9,2-2S18.1,18,17,18z"/>`,
+      // ---------------------------- Icon SVG library ----------------------------
+      // All icons are 24x24 outline, stroke 1.5, currentColor.
+      const ICON_ATTRS =
+        'viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"';
+
+      const ICON_PATHS = {
+        plane: `
+          <path d="M21 14l-9 7-4-7"/>
+          <path d="M3 7l9-4 9 4-9 11-9-11z"/>
+          <path d="M12 3v15"/>
+        `,
+        location: `
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+          <circle cx="12" cy="10" r="3"/>
+        `,
+        restaurant: `
+          <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/>
+          <line x1="7" y1="2" x2="7" y2="22"/>
+          <path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3z"/>
+          <line x1="21" y1="15" x2="21" y2="22"/>
+        `,
+        hotel: `
+          <path d="M2 4v16"/>
+          <path d="M2 8h18a2 2 0 0 1 2 2v10"/>
+          <path d="M2 17h20"/>
+          <circle cx="7" cy="12" r="2"/>
+        `,
+        shopping: `
+          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <path d="M16 10a4 4 0 0 1-8 0"/>
+        `,
+        info: `
+          <circle cx="12" cy="12" r="10"/>
+          <line x1="12" y1="16" x2="12" y2="11"/>
+          <line x1="12" y1="8" x2="12.01" y2="8"/>
+        `,
+        train: `
+          <rect x="4" y="3" width="16" height="16" rx="2"/>
+          <path d="M4 11h16"/>
+          <circle cx="8.5" cy="15" r="1"/>
+          <circle cx="15.5" cy="15" r="1"/>
+          <path d="M8 19l-2 3"/>
+          <path d="M16 19l2 3"/>
+        `,
+        chevron: `
+          <polyline points="9 18 15 12 9 6"/>
+        `,
+        mapPin: `
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+          <circle cx="12" cy="10" r="3"/>
+        `,
+        externalLink: `
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+          <polyline points="15 3 21 3 21 9"/>
+          <line x1="10" y1="14" x2="21" y2="3"/>
+        `,
       };
 
+      function svg(name) {
+        const path = ICON_PATHS[name] || ICON_PATHS.location;
+        return `<svg ${ICON_ATTRS}>${path}</svg>`;
+      }
+
+      // ---------------------------- State + load --------------------------------
       const ITINERARY_SOURCE = 'itinerary.json';
 
+      const container = document.getElementById('container');
+      const dayIndicator = document.getElementById('dayIndicator');
+      const overlay = document.getElementById('overlay');
+      const bottomSheet = document.getElementById('bottomSheet');
+      const sheetContent = document.getElementById('sheetContent');
+
       let itineraryData = null;
-      let currentDetailItem = null;
+      let dayCards = [];
+      let dayDots = [];
+      let activeDayIndex = 0;
 
-      function openGeneralInfo() {
-        const generalInfoHTML =
-          document.getElementById('generalInfoContent').innerHTML;
-        sheetContent.innerHTML = generalInfoHTML;
-        currentDetailItem = null; // Ensure consistency
-        overlay.classList.add('active');
-        bottomSheet.classList.add('active');
-      }
-
-      function openTrainInfo() {
-        const trainInfoHTML =
-          document.getElementById('trainInfoContent').innerHTML; // 使用新的內容區塊
-        sheetContent.innerHTML = trainInfoHTML;
-        currentDetailItem = null; // Ensure consistency
-        overlay.classList.add('active');
-        bottomSheet.classList.add('active');
-      }
-
-      // Load JSON data
       async function loadItinerary() {
         try {
           const response = await fetch(ITINERARY_SOURCE);
           itineraryData = await response.json();
           renderItinerary();
+          renderDayIndicator();
+          observeActiveDay();
         } catch (error) {
           console.error('Error loading itinerary:', error);
-          document.getElementById('container').innerHTML =
-            `<div style="padding: 20px; color: red;">無法載入行程資料，請確認 ${ITINERARY_SOURCE} 檔案存在</div>`;
+          container.innerHTML = `<div class="error-state">無法載入行程資料，請確認 ${ITINERARY_SOURCE} 檔案存在</div>`;
         }
       }
 
-      // Render itinerary
+      // ---------------------------- Render --------------------------------------
       function renderItinerary() {
-        const container = document.getElementById('container');
         container.innerHTML = '';
-        // We don't reset scroll position here anymore, it's handled by scrollToDay
+        dayCards = [];
 
-        itineraryData.days.forEach((day) => {
-          const dayCard = document.createElement('div');
+        itineraryData.days.forEach((day, dayIdx) => {
+          const dayCard = document.createElement('section');
           dayCard.className = 'day-card';
+          dayCard.dataset.dayIndex = String(dayIdx);
 
-          const dayHeader = document.createElement('div');
-          dayHeader.className = 'day-header';
-          dayHeader.innerHTML = `
-            <div style="display: flex; align-items: center; gap: 12px;">
-              <span>DAY ${day.dayNumber} | ${day.date}</span>
-              <button class="general-info-btn" onclick="openGeneralInfo()" title="通用資訊">i</button>
-              <button class="general-info-btn" onclick="openTrainInfo()" title="福岡市地下鐵資訊">鐵</button>
+          const header = document.createElement('header');
+          header.className = 'day-header';
+          header.innerHTML = `
+            <h1 class="day-title">DAY ${day.dayNumber} │ ${escapeHtml(day.date)}</h1>
+            <div class="day-chips">
+              <button class="chip-info" type="button" data-info="general">
+                ${svg('info')}
+                <span>通用</span>
+              </button>
+              <button class="chip-info" type="button" data-info="train">
+                ${svg('train')}
+                <span>地鐵</span>
+              </button>
             </div>
           `;
+          header
+            .querySelector('[data-info="general"]')
+            .addEventListener('click', openGeneralInfo);
+          header
+            .querySelector('[data-info="train"]')
+            .addEventListener('click', openTrainInfo);
 
-          const dayContent = document.createElement('ul');
-          dayContent.className = 'day-content';
+          const list = document.createElement('ul');
+          list.className = 'day-content';
 
           day.items.forEach((item) => {
-            const itemDiv = document.createElement('li');
-            itemDiv.className = 'item';
-
-            if (item.hasDetails) {
-              itemDiv.classList.add('clickable');
-              itemDiv.onclick = () => openBottomSheet(item);
-            }
-
-            const iconDiv = document.createElement('div');
-            iconDiv.className = `icon ${item.icon}`;
-            iconDiv.innerHTML = `<svg viewBox="0 0 24 24">${
-              icons[item.icon] || icons.location
-            }</svg>`;
-
-            const contentDiv = document.createElement('div');
-            contentDiv.className = 'item-content';
-
-            if (item.time) {
-              const timeDiv = document.createElement('p');
-              timeDiv.className = 'time';
-              timeDiv.textContent = item.time;
-              contentDiv.appendChild(timeDiv);
-            }
-
-            const titleDiv = document.createElement('p');
-            titleDiv.className = 'title';
-            titleDiv.textContent = item.title;
-            contentDiv.appendChild(titleDiv);
-
-            if (item.subtitle) {
-              const subtitleDiv = document.createElement('p');
-              subtitleDiv.className = 'subtitle';
-              subtitleDiv.textContent = item.subtitle;
-              contentDiv.appendChild(subtitleDiv);
-            }
-
-            if (item.mapCode) {
-              const mapCodeDiv = document.createElement('div');
-              mapCodeDiv.className = 'map-code';
-              mapCodeDiv.textContent = `${item.mapCode}`;
-              contentDiv.appendChild(mapCodeDiv);
-            }
-
-            itemDiv.appendChild(iconDiv);
-            itemDiv.appendChild(contentDiv);
-
-            if (item.hasDetails) {
-              const chevronDiv = document.createElement('div');
-              chevronDiv.className = 'item-chevron';
-              chevronDiv.innerHTML = '&rsaquo;';
-              itemDiv.appendChild(chevronDiv);
-            }
-
-            dayContent.appendChild(itemDiv);
+            list.appendChild(renderItem(item));
           });
 
-          dayCard.appendChild(dayHeader);
-          dayCard.appendChild(dayContent);
+          dayCard.appendChild(header);
+          dayCard.appendChild(list);
           container.appendChild(dayCard);
+          dayCards.push(dayCard);
         });
       }
 
-      // Bottom Sheet functions
-      const overlay = document.getElementById('overlay');
-      const bottomSheet = document.getElementById('bottomSheet');
-      const sheetContent = document.getElementById('sheetContent');
+      function renderItem(item) {
+        const li = document.createElement('li');
+        li.className = 'item';
+        if (!item.time) li.classList.add('no-time');
+        if (item.hasDetails) {
+          li.classList.add('clickable');
+          li.setAttribute('role', 'button');
+          li.setAttribute('tabindex', '0');
+          li.addEventListener('click', () => openBottomSheet(item));
+          li.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+              event.preventDefault();
+              openBottomSheet(item);
+            }
+          });
+        }
 
+        const iconWrap = document.createElement('div');
+        iconWrap.className = 'item-icon';
+        iconWrap.innerHTML = svg(item.icon);
+
+        const time = document.createElement('div');
+        time.className = 'item-time';
+        time.textContent = item.time || '';
+
+        const content = document.createElement('div');
+        content.className = 'item-content';
+
+        const titleEl = document.createElement('p');
+        titleEl.className = 'item-title';
+        titleEl.textContent = item.title;
+        content.appendChild(titleEl);
+
+        if (item.subtitle) {
+          const subEl = document.createElement('p');
+          subEl.className = 'item-subtitle';
+          subEl.textContent = item.subtitle;
+          content.appendChild(subEl);
+        }
+
+        if (item.mapCode) {
+          const codeEl = document.createElement('span');
+          codeEl.className = 'item-mapcode';
+          codeEl.textContent = item.mapCode;
+          content.appendChild(codeEl);
+        }
+
+        const chevron = document.createElement('div');
+        chevron.className = 'item-chevron';
+        chevron.innerHTML = svg('chevron');
+
+        li.appendChild(iconWrap);
+        if (item.time) li.appendChild(time);
+        li.appendChild(content);
+        li.appendChild(chevron);
+        return li;
+      }
+
+      // ---------------------------- Day indicator -------------------------------
+      function renderDayIndicator() {
+        dayIndicator.innerHTML = '';
+        dayDots = [];
+        itineraryData.days.forEach((day, idx) => {
+          const dot = document.createElement('button');
+          dot.type = 'button';
+          dot.className = 'day-dot';
+          dot.setAttribute('aria-label', `DAY ${day.dayNumber} ${day.date}`);
+          if (idx === 0) {
+            dot.classList.add('active');
+            dot.setAttribute('aria-current', 'true');
+          }
+          dot.addEventListener('click', () => scrollToDay(idx));
+          dayIndicator.appendChild(dot);
+          dayDots.push(dot);
+        });
+      }
+
+      function scrollToDay(idx) {
+        const card = dayCards[idx];
+        if (!card) return;
+        const prefersReduce = window.matchMedia(
+          '(prefers-reduced-motion: reduce)',
+        ).matches;
+        container.scrollTo({
+          left: card.offsetLeft,
+          behavior: prefersReduce ? 'auto' : 'smooth',
+        });
+      }
+
+      function setActiveDay(idx) {
+        if (idx === activeDayIndex) return;
+        activeDayIndex = idx;
+        dayDots.forEach((dot, i) => {
+          if (i === idx) {
+            dot.classList.add('active');
+            dot.setAttribute('aria-current', 'true');
+          } else {
+            dot.classList.remove('active');
+            dot.removeAttribute('aria-current');
+          }
+        });
+      }
+
+      function observeActiveDay() {
+        if (!('IntersectionObserver' in window)) return;
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+                const idx = Number(entry.target.dataset.dayIndex);
+                if (!Number.isNaN(idx)) setActiveDay(idx);
+              }
+            });
+          },
+          {
+            root: container,
+            threshold: [0.5, 0.75],
+          },
+        );
+        dayCards.forEach((card) => observer.observe(card));
+      }
+
+      // ---------------------------- Bottom sheet --------------------------------
       function openBottomSheet(item) {
-        sheetContent.scrollTop = 0; // 每次打開時重置滾動位置
-        currentDetailItem = item;
-        renderBottomSheetContent(item);
+        sheetContent.innerHTML = renderDetail(item);
+        sheetContent.scrollTop = 0;
+        overlay.classList.add('active');
+        bottomSheet.classList.add('active');
+      }
+
+      function openGeneralInfo() {
+        const tpl = document.getElementById('generalInfoTemplate');
+        sheetContent.innerHTML = tpl.innerHTML;
+        sheetContent.scrollTop = 0;
+        overlay.classList.add('active');
+        bottomSheet.classList.add('active');
+      }
+
+      function openTrainInfo() {
+        const tpl = document.getElementById('trainInfoTemplate');
+        sheetContent.innerHTML = tpl.innerHTML;
+        sheetContent.scrollTop = 0;
         overlay.classList.add('active');
         bottomSheet.classList.add('active');
       }
@@ -601,75 +1008,189 @@
       function closeBottomSheet() {
         overlay.classList.remove('active');
         bottomSheet.classList.remove('active');
-        currentDetailItem = null;
       }
 
-      function renderBottomSheetContent(item) {
-        let html = `<div class="detail-title">${item.title}</div>`;
+      function renderDetail(item) {
+        const details = item.details || {};
+        let html = `<div class="detail-title" id="sheetTitle">${escapeHtml(item.title)}</div>`;
 
-        if (item.details) {
-          const details = item.details;
+        if (details.googleMapUrl) {
+          html += `
+            <div class="detail-section">
+              <h3 class="detail-label">地圖位置</h3>
+              <a href="${escapeAttr(details.googleMapUrl)}" target="_blank" rel="noopener noreferrer" class="detail-link">
+                ${svg('mapPin')}
+                <span>開啟 Google Maps</span>
+              </a>
+            </div>
+          `;
+        }
 
-          // Google Map Link
-          if (details.googleMapUrl) {
-            html += `
-              <div class="detail-section">
-                <label class="detail-label">地圖位置</label>
-                <a href="${details.googleMapUrl}" target="_blank" class="detail-link">
-                  📍 開啟 Google Maps
-                </a>
+        if (details.notes) {
+          html += `
+            <div class="detail-section">
+              <h3 class="detail-label">備註</h3>
+              <div class="detail-notes">${details.notes}</div>
+            </div>
+          `;
+        }
+
+        if (details.menuImages && details.menuImages.length > 0) {
+          html += `
+            <div class="detail-section">
+              <h3 class="detail-label">菜單</h3>
+              <div class="menu-images">
+                ${details.menuImages
+                  .map(
+                    (src) => `
+                  <div class="menu-image">
+                    <img src="${escapeAttr(src)}" alt="菜單圖片" loading="lazy">
+                  </div>
+                `,
+                  )
+                  .join('')}
               </div>
-            `;
-          }
+            </div>
+          `;
+        }
 
-          // Notes
-          if (details.notes) {
-            html += `
-              <div class="detail-section">
-                <div class="detail-label">備註</div>
-                <div class="detail-notes">${details.notes}</div>
-              </div>
-            `;
-          }
+        if (details.website) {
+          html += `
+            <div class="detail-section">
+              <h3 class="detail-label">簡介</h3>
+              <a href="${escapeAttr(details.website)}" target="_blank" rel="noopener noreferrer" class="detail-link">
+                ${svg('externalLink')}
+                <span>查看網站</span>
+              </a>
+            </div>
+          `;
+        }
 
-          // Menu Images
-          if (details.menuImages && details.menuImages.length > 0) {
-            html += `
-              <div class="detail-section">
-                <div class="detail-label">菜單</div>
-                <div class="menu-images">
-            `;
-            details.menuImages.forEach((imgPath) => {
-              html += `
-                <div class="menu-image">
-                  <img src="${imgPath}" alt="菜單圖片">
-                </div>
-              `;
-            });
-            html += `
-                </div>
-              </div>
-            `;
-          }
+        return html;
+      }
 
-          // Website Link
-          if (details.website) {
-            html += `
-              <div class="detail-section">
-                <div class="detail-label">簡介</div>
-                <a href="${details.website}" target="_blank" class="detail-link">
-                  🔗 查看網站
-                </a>
-              </div>
-            `;
+      // ---------------------------- Utils ---------------------------------------
+      function escapeHtml(str) {
+        if (str == null) return '';
+        return String(str)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;');
+      }
+
+      function escapeAttr(str) {
+        if (str == null) return '';
+        return String(str).replace(/"/g, '&quot;').replace(/</g, '&lt;');
+      }
+
+      // ---------------------------- Drag to close ------------------------------
+      const sheetHandle = document.getElementById('sheetHandle');
+      const CLOSE_THRESHOLD_RATIO = 0.25;
+
+      let dragStartY = null;
+      let dragActivePointerId = null;
+      let isDraggingSheet = false;
+
+      function pointY(event) {
+        if (event.clientY !== undefined && event.clientY !== null) {
+          return event.clientY;
+        }
+        if (event.touches && event.touches[0]) {
+          return event.touches[0].clientY;
+        }
+        return 0;
+      }
+
+      function onHandlePointerDown(event) {
+        if (!bottomSheet.classList.contains('active')) return;
+        if (event.isPrimary === false) return;
+        dragStartY = pointY(event);
+        dragActivePointerId = event.pointerId ?? null;
+        isDraggingSheet = false;
+        if (sheetHandle.setPointerCapture && dragActivePointerId !== null) {
+          sheetHandle.setPointerCapture(dragActivePointerId);
+        }
+      }
+
+      function onHandlePointerMove(event) {
+        if (dragStartY === null) return;
+        if (
+          dragActivePointerId !== null &&
+          event.pointerId !== undefined &&
+          event.pointerId !== dragActivePointerId
+        ) {
+          return;
+        }
+
+        const deltaY = pointY(event) - dragStartY;
+
+        if (deltaY <= 0) {
+          bottomSheet.style.transition = 'none';
+          bottomSheet.style.transform = '';
+          overlay.style.opacity = '';
+          isDraggingSheet = false;
+          return;
+        }
+
+        isDraggingSheet = true;
+        bottomSheet.style.transition = 'none';
+        bottomSheet.style.transform = `translateY(${deltaY}px)`;
+
+        const ratio = Math.min(deltaY / bottomSheet.offsetHeight, 1);
+        overlay.style.opacity = String(Math.max(0, 1 - ratio * 0.85));
+      }
+
+      function onHandlePointerUp(event) {
+        if (dragStartY === null) return;
+        if (
+          dragActivePointerId !== null &&
+          event.pointerId !== undefined &&
+          event.pointerId !== dragActivePointerId
+        ) {
+          return;
+        }
+
+        const deltaY = pointY(event) - dragStartY;
+        const shouldClose =
+          isDraggingSheet &&
+          deltaY > bottomSheet.offsetHeight * CLOSE_THRESHOLD_RATIO;
+
+        bottomSheet.style.transition = '';
+        bottomSheet.style.transform = '';
+        overlay.style.opacity = '';
+
+        if (
+          sheetHandle.releasePointerCapture &&
+          dragActivePointerId !== null
+        ) {
+          try {
+            sheetHandle.releasePointerCapture(dragActivePointerId);
+          } catch {
+            /* pointer already released */
           }
         }
 
-        sheetContent.innerHTML = html;
+        dragStartY = null;
+        dragActivePointerId = null;
+        isDraggingSheet = false;
+
+        if (shouldClose) closeBottomSheet();
       }
 
-      // Event listeners
+      sheetHandle.addEventListener('pointerdown', onHandlePointerDown);
+      sheetHandle.addEventListener('pointermove', onHandlePointerMove);
+      sheetHandle.addEventListener('pointerup', onHandlePointerUp);
+      sheetHandle.addEventListener('pointercancel', onHandlePointerUp);
+
       overlay.addEventListener('click', closeBottomSheet);
+      document.addEventListener('keydown', (event) => {
+        if (
+          event.key === 'Escape' &&
+          bottomSheet.classList.contains('active')
+        ) {
+          closeBottomSheet();
+        }
+      });
 
       loadItinerary();
     </script>
