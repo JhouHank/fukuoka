@@ -1157,10 +1157,7 @@
         bottomSheet.style.transform = '';
         overlay.style.opacity = '';
 
-        if (
-          sheetHandle.releasePointerCapture &&
-          dragActivePointerId !== null
-        ) {
+        if (sheetHandle.releasePointerCapture && dragActivePointerId !== null) {
           try {
             sheetHandle.releasePointerCapture(dragActivePointerId);
           } catch {
