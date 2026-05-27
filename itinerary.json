@@ -6,7 +6,7 @@
       "items": [
         {
           "time": "13:00",
-          "icon": "location",
+          "icon": "plane",
           "title": "抵達福岡",
           "subtitle": null,
           "mapCode": null,
@@ -25,7 +25,7 @@
         },
         {
           "time": "14:30",
-          "icon": "location",
+          "icon": "hotel",
           "title": "JR九州bloosom酒店 check in",
           "subtitle": null,
           "mapCode": null,
@@ -37,7 +37,7 @@
         },
         {
           "time": null,
-          "icon": "location",
+          "icon": "restaurant",
           "title": "博多車站 努努雞",
           "subtitle": null,
           "mapCode": null,
@@ -60,7 +60,7 @@
         },
         {
           "time": "18:30",
-          "icon": "location",
+          "icon": "restaurant",
           "title": "晚餐：肉之山翔(已預約)",
           "subtitle": null,
           "mapCode": null,
@@ -77,13 +77,12 @@
       "items": [
         {
           "time": "09:00",
-          "icon": "location",
+          "icon": "restaurant",
           "title": "早餐：Dacomecca",
-          "subtitle": "星期六、07:00–19:00",
           "mapCode": null,
           "hasDetails": true,
           "details": {
-            "notes": "【地址】福岡県福岡市博多区博多駅東１丁目１８−３３ 博多イーストテラス １階",
+            "notes": "【地址】福岡県福岡市博多区博多駅東１丁目１８−３３ 博多イーストテラス １階<br/>【營業時間】星期六 07:00–19:00",
             "googleMapUrl": "https://www.google.com/maps/search/?api=1&query=DACOMECCA%20%E5%8D%9A%E5%A4%9A"
           }
         },
@@ -123,7 +122,7 @@
         },
         {
           "time": "12:00",
-          "icon": "location",
+          "icon": "restaurant",
           "title": "午餐：Princess Phi Phi(待定)",
           "subtitle": null,
           "mapCode": null,
@@ -145,7 +144,7 @@
         },
         {
           "time": "19:00",
-          "icon": "location",
+          "icon": "restaurant",
           "title": "晚餐：Shin-Shin 博多拉麵",
           "subtitle": null,
           "mapCode": null,
@@ -163,13 +162,12 @@
       "items": [
         {
           "time": null,
-          "icon": "location",
+          "icon": "restaurant",
           "title": "早餐：Espresso",
-          "subtitle": "10:00-15:00",
           "mapCode": null,
           "hasDetails": true,
           "details": {
-            "notes": "【地址】日本〒812-0016 Fukuoka, Hakata Ward, Hakataekiminami, 2 Chome−1−26 一倉ビル 1F",
+            "notes": "【地址】日本〒812-0016 Fukuoka, Hakata Ward, Hakataekiminami, 2 Chome−1−26 一倉ビル 1F<br/>【營業時間】10:00-15:00",
             "googleMapUrl": "https://www.google.com/maps/search/?api=1&query=%E3%82%AB%E3%83%95%E3%82%A7%E3%82%A8%E3%82%B9%E3%83%97%E3%83%AC%E3%83%83%E3%82%BD%20%E5%8D%9A%E5%A4%9A%E9%A7%85%E5%8D%97%20%E4%B8%80%E5%80%89%E3%83%93%E3%83%AB"
           }
         },
@@ -195,14 +193,14 @@
         {
           "time": null,
           "icon": "location",
-          "title": "逛街 福岡parco/福岡三越/天神地下街",
+          "title": "逛街：福岡parco/福岡三越/天神地下街",
           "subtitle": null,
           "mapCode": null,
           "hasDetails": false
         },
         {
           "time": "12:00",
-          "icon": "location",
+          "icon": "restaurant",
           "title": "午餐：天神找東西吃",
           "subtitle": null,
           "mapCode": null,
@@ -213,7 +211,7 @@
         },
         {
           "time": "14:00",
-          "icon": "location",
+          "icon": "restaurant",
           "title": "下午茶：Pain Stock Tenjin",
           "subtitle": null,
           "mapCode": null,
@@ -247,7 +245,7 @@
         },
         {
           "time": "19:00",
-          "icon": "location",
+          "icon": "restaurant",
           "title": "晚餐：水炊鍋 橙(已預約)",
           "subtitle": null,
           "mapCode": null,
@@ -259,7 +257,7 @@
         },
         {
           "time": null,
-          "icon": "location",
+          "icon": "restaurant",
           "title": "天神屋台",
           "subtitle": null,
           "mapCode": null,
@@ -276,7 +274,7 @@
       "items": [
         {
           "time": "07:00",
-          "icon": "location",
+          "icon": "restaurant",
           "title": "早餐：前一晚超商買",
           "subtitle": null,
           "mapCode": null,
@@ -318,7 +316,7 @@
         },
         {
           "time": "12:00",
-          "icon": "location",
+          "icon": "restaurant",
           "title": "午餐：高千穗牛餐廳 和",
           "subtitle": null,
           "mapCode": null,
@@ -363,7 +361,7 @@
         },
         {
           "time": "19:00",
-          "icon": "location",
+          "icon": "hotel",
           "title": "熊本OMO5 check in",
           "subtitle": null,
           "mapCode": null,
@@ -374,7 +372,7 @@
         },
         {
           "time": "21:30",
-          "icon": "location",
+          "icon": "restaurant",
           "title": "晚餐：鳥貴族",
           "subtitle": null,
           "mapCode": null,
@@ -391,7 +389,7 @@
       "items": [
         {
           "time": "09:00",
-          "icon": "location",
+          "icon": "restaurant",
           "title": "早餐：コメダ珈琲店 熊本下通店 或是 星乃咖啡",
           "subtitle": null,
           "mapCode": null,
@@ -414,7 +412,7 @@
         },
         {
           "time": "12:00",
-          "icon": "location",
+          "icon": "restaurant",
           "title": "午餐：勝烈亭豬排",
           "subtitle": null,
           "mapCode": null,
@@ -449,7 +447,7 @@
         },
         {
           "time": null,
-          "icon": "location",
+          "icon": "hotel",
           "title": "步行至日航飯店 Check in",
           "subtitle": null,
           "mapCode": null,
@@ -468,7 +466,7 @@
         },
         {
           "time": "19:30",
-          "icon": "location",
+          "icon": "restaurant",
           "title": "晚餐：前田屋 牛腸鍋(已預約)",
           "subtitle": null,
           "mapCode": null,
@@ -485,7 +483,7 @@
       "items": [
         {
           "time": "09:00",
-          "icon": "location",
+          "icon": "restaurant",
           "title": "早餐：",
           "subtitle": null,
           "mapCode": null,
@@ -493,7 +491,7 @@
         },
         {
           "time": "12:00",
-          "icon": "location",
+          "icon": "plane",
           "title": "機場+午餐",
           "subtitle": null,
           "mapCode": null,
