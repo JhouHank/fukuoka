@@ -286,6 +286,7 @@
             "notes": "車程約2個半小時<br/>天馬行空包車<br/>費用16200<br/>4/29 付訂金5000<br/>5/18 付尾款11200"
           }
         },
+
         {
           "time": "10:30",
           "icon": "location",
@@ -319,6 +320,14 @@
             "notes": "<a href=\"https://zh-tw-62123.site-translation.com/gourmet/\" target=\"_blank\">高千穗町觀光協會 [官方]</a>",
             "googleMapUrl": "https://maps.app.goo.gl/Cf5ZM9JTEP5zuCyS9"
           }
+        },
+        {
+          "time": "14:15",
+          "icon": "location",
+          "title": "回程飛機報到",
+          "subtitle": null,
+          "mapCode": null,
+          "hasDetails": false
         },
         {
           "time": "14:30",
